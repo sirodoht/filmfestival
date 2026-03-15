@@ -2,16 +2,19 @@
 
 {% block content %}
     <section class="hero">
-        <p class="hero-tagline">Bold stories. Ninety seconds.</p>
-        <h1 class="hero-title">
-            Heartfort
-            <span class="flash">Flash</span>
-            <span class="film-festival">Film Festival</span>
-        </h1>
-        <div class="hero-meta">
-            <span>Summer 2026</span>
-            <span class="hero-meta-divider"></span>
-            <span>London</span>
+        <div class="hero-spotlight"></div>
+        <div class="hero-content">
+            <p class="hero-tagline">Bold stories. Ninety seconds.</p>
+            <h1 class="hero-title">
+                Heartfort
+                <span class="flash">Flash</span>
+                <span class="film-festival">Film Festival</span>
+            </h1>
+            <div class="hero-meta">
+                <span>Summer 2026</span>
+                <span class="hero-meta-divider"></span>
+                <span>London</span>
+            </div>
         </div>
         <div class="hero-indicator">
             <span>Open Call Now Live</span>
@@ -193,5 +196,28 @@
                 }
             });
         });
+
+        // Spotlight effect
+        const hero = document.querySelector('.hero');
+        const spotlight = document.querySelector('.hero-spotlight');
+
+        if (hero && spotlight) {
+            hero.addEventListener('mousemove', (e) => {
+                const rect = hero.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                spotlight.style.left = x + 'px';
+                spotlight.style.top = y + 'px';
+            });
+
+            hero.addEventListener('mouseleave', () => {
+                spotlight.style.opacity = '0';
+            });
+
+            hero.addEventListener('mouseenter', () => {
+                spotlight.style.opacity = '1';
+            });
+        }
     </script>
 {% endblock scripts %}

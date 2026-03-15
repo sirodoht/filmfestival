@@ -153,10 +153,35 @@
             align-items: center;
             text-align: center;
             padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
         }
         @media (max-width: 768px) {
             .hero {
                 padding: 0 1.5rem;
+            }
+        }
+
+        .hero-spotlight {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 169, 98, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        @media (max-width: 768px) {
+            .hero-spotlight {
+                width: 400px;
+                height: 400px;
             }
         }
 

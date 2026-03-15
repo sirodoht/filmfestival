@@ -7,6 +7,7 @@
     <link href="https://fonts.bunny.net/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
     <style>
         body {
+            margin: 0;
             font-family: 'Cinzel', serif;
             font-weight: 400;
             background: #0a0a0a;
@@ -375,7 +376,7 @@
             font-size: clamp(5rem, 12vw, 8rem);
             color: #e8e6e3;
             line-height: 1;
-            margin-bottom: 0.75rem;
+            margin-bottom: 2rem;
             font-weight: 300;
         }
 
@@ -386,6 +387,68 @@
             text-transform: uppercase;
         }
 
+        .stat-timer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .timer-ring {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .timer-ring {
+                width: 240px;
+                height: 240px;
+            }
+        }
+
+        .timer-ring::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            border-radius: 50%;
+        }
+
+        .timer-ring::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border: 1px solid rgba(201, 169, 98, 0.1);
+            border-radius: 50%;
+        }
+
+        .stat-timer .stat-number {
+            font-size: clamp(6rem, 14vw, 10rem);
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+            transform: translateY(-36px);
+        }
+        @media (max-width: 768px) {
+            .stat-timer .stat-number {
+                font-size: clamp(5rem, 12vw, 8rem);
+            }
+        }
+
+        .stat-timer .stat-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.4em;
+            color: #c9a962;
+        }
+
         @media (max-width: 768px) {
             .festival-info {
                 padding: 5rem 0;
@@ -394,19 +457,24 @@
 
         /* Important Dates Section */
         .important-dates-section {
-            margin-top: 3rem;
-            padding: 2rem 0;
+            margin-top: 6rem;
+            padding: 4rem 0;
             border-top: 1px solid rgba(201, 169, 98, 0.15);
             text-align: left;
             width: 100%;
         }
+        @media (max-width: 768px) {
+            .important-dates-section {
+                margin-top: 4rem;
+                padding: 3rem 0;
+            }
+        }
 
         .important-dates-inner {
-            max-width: 1200px;
+            max-width: 500px;
             margin: 0 auto;
             padding: 0 3rem;
         }
-
         @media (max-width: 768px) {
             .important-dates-inner {
                 padding: 0 1.5rem;
@@ -417,19 +485,23 @@
             font-size: 0.75rem;
             letter-spacing: 0.3em;
             color: #c9a962;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2.5rem;
             text-transform: uppercase;
             opacity: 0.9;
+        }
+        @media (max-width: 768px) {
+            .important-dates-label {
+                margin-bottom: 2rem;
+            }
         }
 
         .timeline {
             position: relative;
-            padding-left: 1.5rem;
+            padding-left: 2rem;
         }
-
         @media (max-width: 768px) {
             .timeline {
-                padding-left: 1rem;
+                padding-left: 1.25rem;
             }
         }
 
@@ -445,14 +517,13 @@
 
         .timeline-item {
             position: relative;
-            padding-bottom: 2rem;
-            padding-left: 2rem;
+            padding-bottom: 2.5rem;
+            padding-left: 2.5rem;
         }
-
         @media (max-width: 768px) {
             .timeline-item {
-                padding-left: 1.5rem;
-                padding-bottom: 1.5rem;
+                padding-left: 1.75rem;
+                padding-bottom: 2rem;
             }
         }
 
@@ -462,7 +533,7 @@
 
         .timeline-dot {
             position: absolute;
-            left: -1.9rem;
+            left: -2.35rem;
             top: 0.35rem;
             width: 7px;
             height: 7px;
@@ -470,10 +541,9 @@
             border-radius: 50%;
             opacity: 0.8;
         }
-
         @media (max-width: 768px) {
             .timeline-dot {
-                left: -1.3rem;
+                left: -1.6rem;
                 top: 0.4rem;
                 width: 6px;
                 height: 6px;
@@ -520,8 +590,6 @@
 
         /* Submissions Section */
         .submissions-section {
-            margin: 3rem 2rem;
-            border: 1px solid rgba(201, 169, 98, 0.25);
             text-align: center;
             background: #141414;
         }
@@ -532,12 +600,17 @@
         }
 
         .submissions-inner {
+            margin: 2rem 2rem;
+            border: 1px solid rgba(201, 169, 98, 0.25);
+        }
+
+        .submissions-content {
             max-width: 700px;
             margin: 0 auto;
             padding: 20rem 2rem;
         }
         @media (max-width: 768px) {
-            .submissions-inner {
+            .submissions-content {
                 padding: 5rem 1.5rem;
             }
         }
@@ -743,6 +816,46 @@
                 font-size: 0.85rem;
             }
         }
+
+        /* Footer */
+        .footer {
+            width: 100%;
+            background: #141414;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(201, 169, 98, 0.15);
+        }
+        @media (max-width: 768px) {
+            .footer {
+                padding: 2rem 0;
+            }
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .footer-inner {
+                padding: 0 1.5rem;
+            }
+        }
+
+        .footer-logo {
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            color: #e8e6e3;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .footer-copyright {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            color: #7a7269;
+        }
     </style>
 </head>
 <body>
@@ -758,6 +871,13 @@
         {% block content %}
         {% endblock content %}
     </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">Heartfort Flash Film Festival</div>
+            <div class="footer-copyright">🄯 No Rights Reserved. CC0 1.0 Universal.</div>
+        </div>
+    </footer>
 
     {% block scripts %}
     {% endblock scripts %}

@@ -6,6 +6,10 @@
     <title>{% block title %}Heartfort Flash Film Festival{% endblock %}</title>
     <link href="https://fonts.bunny.net/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             font-family: 'Cinzel', serif;
@@ -34,6 +38,70 @@
             .nav {
                 padding: 1.5rem 1.5rem;
             }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                z-index: 99;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-link {
+                font-size: 1.2rem;
+                letter-spacing: 0.2em;
+            }
+
+            .nav-hamburger {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                cursor: pointer;
+                z-index: 101;
+                padding: 0.5rem;
+            }
+
+            .nav-hamburger span {
+                display: block;
+                width: 24px;
+                height: 1px;
+                background: #c9a962;
+                transition: all 0.3s ease;
+            }
+
+            .nav-hamburger.active span:first-child {
+                transform: rotate(45deg) translate(4px, 4px);
+            }
+
+            .nav-hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-hamburger.active span:last-child {
+                transform: rotate(-45deg) translate(4px, -4px);
+            }
+        }
+
+        @media (min-width: 769px) {
+            .nav-hamburger {
+                display: none;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 2.5rem;
+            }
         }
 
         .nav-logo {
@@ -42,17 +110,6 @@
             color: #e8e6e3;
             text-decoration: none;
             text-transform: uppercase;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 1.5rem;
-            }
         }
 
         .nav-link {
@@ -87,7 +144,7 @@
         }
         @media (max-width: 768px) {
             .hero {
-                padding: 5rem 1.5rem;
+                padding: 0 1.5rem;
             }
         }
 
@@ -1148,12 +1205,17 @@
 <body>
     <nav class="nav">
         <a href="{% url 'main:index' %}" class="nav-logo">HFFF</a>
+        <div class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('active'); this.classList.toggle('active');">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <div class="nav-links">
-            <a href="{% url 'main:index' %}#theme" class="nav-link">Theme</a>
-            <a href="{% url 'main:index' %}#about" class="nav-link">About</a>
-            <a href="{% url 'main:index' %}#dates" class="nav-link">Dates</a>
-            <a href="{% url 'main:index' %}#faq" class="nav-link">FAQ</a>
-            <a href="{% url 'main:submit' %}" class="nav-link">Open Call</a>
+            <a href="{% url 'main:index' %}#opencall" class="nav-link" onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.nav-hamburger').classList.remove('active');">Open Call</a>
+            <a href="{% url 'main:index' %}#theme" class="nav-link" onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.nav-hamburger').classList.remove('active');">Theme</a>
+            <a href="{% url 'main:index' %}#about" class="nav-link" onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.nav-hamburger').classList.remove('active');">About</a>
+            <a href="{% url 'main:index' %}#dates" class="nav-link" onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.nav-hamburger').classList.remove('active');">Dates</a>
+            <a href="{% url 'main:index' %}#faq" class="nav-link" onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.nav-hamburger').classList.remove('active');">FAQ</a>
         </div>
     </nav>
 

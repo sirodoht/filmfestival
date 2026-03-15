@@ -514,14 +514,14 @@
         /* Festival Info Section */
         .festival-info {
             margin-top: 0;
-            padding: 8rem 0;
+            padding: 6rem 0;
             text-align: left;
             width: 100%;
             background: #0a0a0a;
         }
         @media (max-width: 768px) {
             .festival-info {
-                padding: 5rem 0;
+                padding: 4rem 0;
             }
         }
 
@@ -549,8 +549,8 @@
         .festival-info-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
+            gap: 3rem;
+            align-items: center;
         }
         @media (max-width: 768px) {
             .festival-info-content {
@@ -639,9 +639,9 @@
 
         .stat-timer .stat-number {
             font-size: clamp(6rem, 14vw, 10rem);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0;
             font-weight: 300;
-            transform: translateY(-36px);
+            transform: translateY(-20px);
         }
         @media (max-width: 768px) {
             .stat-timer .stat-number {
@@ -653,30 +653,36 @@
             font-size: 0.8rem;
             letter-spacing: 0.4em;
             color: #c9a962;
+            margin-top: 12px;
         }
 
         /* Important Dates Section */
         .important-dates-section {
             margin-top: 0;
-            padding: 4rem 0;
+            padding: 6rem 0;
             text-align: left;
             width: 100%;
         }
         @media (max-width: 768px) {
             .important-dates-section {
-                margin-top: 0;
-                padding: 3rem 0;
+                padding: 4rem 0;
             }
         }
 
         .important-dates-inner {
-            max-width: 350px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
         }
         @media (max-width: 768px) {
             .important-dates-inner {
                 padding: 0 1.5rem;
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
 
@@ -684,14 +690,19 @@
             font-size: 0.75rem;
             letter-spacing: 0.3em;
             color: #c9a962;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             text-transform: uppercase;
-            opacity: 0.9;
+            font-weight: 400;
         }
         @media (max-width: 768px) {
             .important-dates-label {
                 margin-bottom: 2rem;
             }
+        }
+
+        .timeline-wrapper {
+            display: flex;
+            justify-content: center;
         }
 
         .timeline {

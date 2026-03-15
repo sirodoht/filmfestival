@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heartfort Flash Film Festival</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            background: #0a0a0a;
+            color: #e8e6e3;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 3rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(
+                circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(201, 184, 150, 0.08) 0%,
+                rgba(20, 20, 25, 0.5) 25%,
+                #0a0a0a 50%
+            );
+            pointer-events: none;
+            z-index: 0;
+            transition: background-position 0.2s ease-out;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .festival-name {
+            font-size: clamp(2rem, 6vw, 4rem);
+            letter-spacing: 0.2em;
+            color: #c9b896;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            letter-spacing: 0.15em;
+            color: #7a7269;
+            margin-bottom: 3rem;
+        }
+
+        .open-call {
+            border-top: 1px solid rgba(201, 184, 150, 0.3);
+            border-bottom: 1px solid rgba(201, 184, 150, 0.3);
+            padding: 2rem 0;
+            margin: 2rem 0;
+        }
+
+        .theme {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: #c9b896;
+            letter-spacing: 0.3em;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .duration {
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            color: #8a8076;
+            margin-bottom: 2rem;
+        }
+
+        .dates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .date-block {
+            padding: 1.5rem;
+        }
+
+        .date-label {
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            color: #7a7269;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .date-value {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: #c9b896;
+            letter-spacing: 0.05em;
+        }
+
+        .venue {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(201, 184, 150, 0.2);
+        }
+
+        .venue-name {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: #e8e6e3;
+            letter-spacing: 0.1em;
+        }
+
+        .venue-location {
+            font-size: 0.95rem;
+            color: #7a7269;
+            margin-top: 0.5rem;
+        }
+
+        .cta {
+            margin-top: 3rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            border: 1px solid #c9b896;
+            color: #c9b896;
+            text-decoration: none;
+            letter-spacing: 0.2em;
+            font-size: 0.9rem;
+            transition: all 0.4s ease;
+        }
+
+        .cta-button:hover {
+            background: #c9b896;
+            color: #0a0a0a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="festival-name">Heartfort Flash Film Festival</h1>
+        <p class="tagline">Open Call for Submissions</p>
+
+        <div class="open-call">
+            <div class="theme">Cats</div>
+            <div class="duration">90 seconds maximum</div>
+
+            <div class="dates-grid">
+                <div class="date-block">
+                    <div class="date-label">Submissions Open</div>
+                    <div class="date-value">July 8</div>
+                </div>
+                <div class="date-block">
+                    <div class="date-label">Festival Date</div>
+                    <div class="date-value">August 8</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="venue">
+            <div class="venue-name">Heartfort</div>
+            <div class="venue-location">London</div>
+        </div>
+
+        <div class="cta">
+            <a href="#" class="cta-button">Submit Your Film</a>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            document.body.style.setProperty('--mouse-x', x + '%');
+            document.body.style.setProperty('--mouse-y', y + '%');
+        });
+    </script>
+</body>
+</html>

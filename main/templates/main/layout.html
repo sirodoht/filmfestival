@@ -105,11 +105,23 @@
         }
 
         .nav-logo {
-            font-size: 0.9rem;
-            letter-spacing: 0.2em;
-            color: #e8e6e3;
-            text-decoration: none;
-            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo svg {
+            height: 28px;
+            width: auto;
+        }
+        @media (max-width: 768px) {
+            .nav-logo svg {
+                height: 24px;
+            }
+        }
+
+        .nav-logo svg path,
+        .nav-logo svg rect {
+            fill: #e8e6e3;
         }
 
         .nav-link {
@@ -1204,7 +1216,9 @@
 </head>
 <body>
     <nav class="nav">
-        <a href="{% url 'main:index' %}" class="nav-logo">HFFF</a>
+        <a href="{% url 'main:index' %}" class="nav-logo">
+            <svg width="100%" height="28" viewBox="0 0 946 781" xmlns="http://www.w3.org/2000/svg"><path d="M0.033,-0.017l58.206,0l0,322.552l221.241,-0l0,-322.552l58.206,0l0,780.606l-58.206,0l0,-365.062l-221.241,0l0,365.062l-58.206,0l0,-780.606Z"/><path d="M493.908,780.589l-57.85,0l-0,-780.606l57.85,0l-0,780.606Z"/><rect x="436.058" y="322.574" width="162.005" height="92.899"/><path d="M714.071,532.724l-57.85,0l-0,-329.541l57.85,0l-0,329.541Z" style="fill-opacity:0.75"/><path d="M829.77,532.724l-57.85,0l0,-329.541l57.85,0l-0,329.541Z" style="fill-opacity:0.5"/><path d="M945.469,532.724l-57.849,0l-0,-329.541l57.849,0l0,329.541Z" style="fill-opacity:0.25"/><rect x="436.058" y="-0.017" width="509.411" height="57.85"/></svg>
+        </a>
         <div class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('active'); this.classList.toggle('active');">
             <span></span>
             <span></span>

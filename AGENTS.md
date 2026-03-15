@@ -93,6 +93,117 @@ from main import models
 - 4-space indentation in templates
 - Use `{% url %}` tag for all internal links
 
+### CSS Patterns
+
+1. Never add the universal selector, eg:
+
+```css
+// DO NOT do this
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+```
+
+Add margin, padding, or box-sizing rules per selector if needed.
+
+2. Do not group all media queries per width, add them per rule.
+
+```css
+// DO NOT do this
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.hero {
+    align-items: center;
+    text-align: center;
+    padding: 6rem 2rem;
+}
+
+.hero-meta {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .nav {
+        padding: 1.5rem 1.5rem;
+    }
+
+    .nav-links {
+        gap: 1.5rem;
+    }
+
+    .hero {
+        padding: 5rem 1.5rem;
+    }
+
+    .hero-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+```
+
+```css
+// DO this instead
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem;
+} // no empty line
+@media (max-width: 768px) {
+    .nav {
+        padding: 1.5rem 1.5rem;
+    }
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 1.5rem;
+    }
+}
+
+.hero {
+    align-items: center;
+    text-align: center;
+    padding: 6rem 2rem;
+}
+@media (max-width: 768px) {
+    .hero {
+        padding: 5rem 1.5rem;
+    }
+}
+
+.hero-meta {
+    display: flex;
+    align-items: center;
+}
+@media (max-width: 768px) {
+    .hero-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+```
+
+3. All CSS must be at layout.html. Don't add extra_css template blocks.
+
 ## Commit Message Style
 
 Use [Conventional Commits](https://www.conventionalcommits.org/):

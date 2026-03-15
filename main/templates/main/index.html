@@ -1,198 +1,169 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heartfort Flash Film Festival</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+{% extends "main/layout.html" %}
 
-        body {
-            font-family: 'Cinzel', serif;
-            font-weight: 400;
-            background: #0a0a0a;
-            color: #e8e6e3;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 3rem 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
+{% block content %}
+    <section class="hero">
+        <p class="hero-tagline">Bold stories. Ninety seconds.</p>
+        <h1 class="hero-title">
+            Heartfort
+            <span class="flash">
+                Flash
+            </span>
+        </h1>
+        <div class="hero-subtitle"> Film Festival</div>
+        <div class="hero-meta">
+            <span>Summer 2026</span>
+            <span class="hero-meta-divider"></span>
+            <span>London</span>
+        </div>
+        <div class="hero-indicator">
+            <span>Open Call Now Live</span>
+        </div>
+    </section>
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: radial-gradient(
-                circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-                rgba(201, 184, 150, 0.08) 0%,
-                rgba(20, 20, 25, 0.5) 25%,
-                #0a0a0a 50%
-            );
-            pointer-events: none;
-            z-index: 0;
-            transition: background-position 0.2s ease-out;
-        }
-
-        .container {
-            max-width: 900px;
-            width: 100%;
-            position: relative;
-            z-index: 1;
-        }
-
-        .festival-name {
-            font-size: clamp(2rem, 6vw, 4rem);
-            letter-spacing: 0.2em;
-            color: #c9b896;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-        }
-
-        .tagline {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            letter-spacing: 0.15em;
-            color: #7a7269;
-            margin-bottom: 3rem;
-        }
-
-        .open-call {
-            border-top: 1px solid rgba(201, 184, 150, 0.3);
-            border-bottom: 1px solid rgba(201, 184, 150, 0.3);
-            padding: 2rem 0;
-            margin: 2rem 0;
-        }
-
-        .theme {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            color: #c9b896;
-            letter-spacing: 0.3em;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-
-        .duration {
-            font-size: 1.1rem;
-            letter-spacing: 0.1em;
-            color: #8a8076;
-            margin-bottom: 2rem;
-        }
-
-        .dates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .date-block {
-            padding: 1.5rem;
-        }
-
-        .date-label {
-            font-size: 0.9rem;
-            letter-spacing: 0.15em;
-            color: #7a7269;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-        }
-
-        .date-value {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            color: #c9b896;
-            letter-spacing: 0.05em;
-        }
-
-        .venue {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 184, 150, 0.2);
-        }
-
-        .venue-name {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            color: #e8e6e3;
-            letter-spacing: 0.1em;
-        }
-
-        .venue-location {
-            font-size: 0.95rem;
-            color: #7a7269;
-            margin-top: 0.5rem;
-        }
-
-        .cta {
-            margin-top: 3rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 3rem;
-            border: 1px solid #c9b896;
-            color: #c9b896;
-            text-decoration: none;
-            letter-spacing: 0.2em;
-            font-size: 0.9rem;
-            transition: all 0.4s ease;
-        }
-
-        .cta-button:hover {
-            background: #c9b896;
-            color: #0a0a0a;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1 class="festival-name">Heartfort Flash Film Festival</h1>
-        <p class="tagline">Open Call for Submissions</p>
-
-        <div class="open-call">
-            <div class="theme">Cats</div>
-            <div class="duration">90 seconds maximum</div>
-
-            <div class="dates-grid">
-                <div class="date-block">
-                    <div class="date-label">Submissions Open</div>
-                    <div class="date-value">July 8</div>
+    <div class="festival-info">
+        <div class="festival-info-inner">
+            <h2 class="festival-info-title">The Festival</h2>
+            <div class="festival-info-content">
+                <div class="festival-info-text">
+                    <p>Heartfort began with a simple belief: great stories don't need hours to resonate. They need truth, vision, and someone willing to take the risk.</p>
+                    <p>One screening. One night. A curated selection of the most compelling short-form cinema from emerging voices around the world.</p>
                 </div>
-                <div class="date-block">
-                    <div class="date-label">Festival Date</div>
-                    <div class="date-value">August 8</div>
+                <div class="festival-stats">
+                    <div class="stat">
+                        <div class="stat-number">90</div>
+                        <div class="stat-label">Seconds Max</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">1</div>
+                        <div class="stat-label">Night Only</div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="venue">
-            <div class="venue-name">Heartfort</div>
-            <div class="venue-location">London</div>
-        </div>
+    <div class="important-dates-section">
+        <div class="important-dates-inner">
+            <div class="important-dates-label">Important Dates</div>
 
-        <div class="cta">
-            <a href="#" class="cta-button">Submit Your Film</a>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">8 July 2026</div>
+                    <div class="timeline-title">Submissions Open</div>
+                    <div class="timeline-description">Begin uploading your films</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Early August 2026</div>
+                    <div class="timeline-title">Submission Deadline</div>
+                    <div class="timeline-description">Final date to enter your film</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">8 August 2026</div>
+                    <div class="timeline-title">Festival Day</div>
+                    <div class="timeline-description">Screenings and celebration at Heartfort, London</div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div class="submissions-section">
+        <div class="submissions-inner">
+            <div class="submissions-label">Submissions</div>
+            <h2 class="submissions-title">Now Accepting Films</h2>
+            <p class="submissions-description">
+                We are embracing flash films. Stories told in 90 seconds. Narrative, experimental, documentary, animated. If it moves you, we want it.
+            </p>
+            <a href="{% url 'main:submit' %}" class="submissions-button">
+                Submit Your Film
+                <svg class="submissions-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-inner">
+            <div class="faq-header">
+                <h2 class="faq-title">FAQ</h2>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3 class="faq-question-text">Why 90 seconds?</h3>
+                        <span class="faq-icon"></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="faq-answer-text">The 90-second constraint forces filmmakers to distill their stories to their absolute essence. Every frame must earn its place. This format celebrates the power of brevity and creative constraint in storytelling.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3 class="faq-question-text">Is there a submission fee?</h3>
+                        <span class="faq-icon"></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="faq-answer-text">Yes, there is a modest submission fee to cover administrative costs and ensure serious entries. Early bird submissions receive a discounted rate. Fee waivers are available for filmmakers facing financial hardship.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3 class="faq-question-text">What file formats do you accept?</h3>
+                        <span class="faq-icon"></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="faq-answer-text">We accept MP4, MOV, and AVI formats. Films should be submitted in 1080p resolution minimum. Files must not exceed 2GB in size.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3 class="faq-question-text">Can I submit multiple films?</h3>
+                        <span class="faq-icon"></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="faq-answer-text">Yes, you may submit multiple films. Each submission requires a separate entry fee. However, each filmmaker can only have one film selected for the festival screening.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3 class="faq-question-text">When will I be notified if my film is selected?</h3>
+                        <span class="faq-icon"></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="faq-answer-text">Selected filmmakers will be notified by email within one week of the submission deadline. All entrants will receive confirmation of their submission status.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
     <script>
-        document.addEventListener('mousemove', function(e) {
-            const x = (e.clientX / window.innerWidth) * 100;
-            const y = (e.clientY / window.innerHeight) * 100;
-            document.body.style.setProperty('--mouse-x', x + '%');
-            document.body.style.setProperty('--mouse-y', y + '%');
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
         });
     </script>
-</body>
-</html>
+{% endblock scripts %}

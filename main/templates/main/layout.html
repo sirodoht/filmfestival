@@ -150,7 +150,7 @@
 
         .hero-indicator {
             position: absolute;
-            bottom: 2.5rem;
+            bottom: 3rem;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -160,6 +160,36 @@
             letter-spacing: 0.2em;
             color: #c9a962;
             text-transform: uppercase;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.55rem;
+            letter-spacing: 0.25em;
+            color: #7a7269;
+            text-transform: uppercase;
+            animation: hero-scroll-bounce 2s ease-in-out infinite;
+        }
+
+        .hero-scroll-arrow {
+            color: #c9a962;
+            opacity: 0.8;
+        }
+
+        @keyframes hero-scroll-bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(8px);
+            }
         }
 
         .container {
@@ -813,7 +843,7 @@
         }
 
         .submissions-content {
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20rem 2rem;
         }

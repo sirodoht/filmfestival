@@ -317,7 +317,6 @@
             text-align: center;
             width: 100%;
             background: linear-gradient(180deg, #0f0f0f 0%, #0a0a0a 100%);
-            border-bottom: 1px solid rgba(201, 169, 98, 0.15);
             border-top: 1px solid rgba(201, 169, 98, 0.1);
         }
 
@@ -502,7 +501,7 @@
             font-size: 1.15rem;
             line-height: 1.9;
             color: #999;
-            max-width: 600px;
+            max-width: 800px;
             margin: 0;
         }
 
@@ -519,6 +518,11 @@
             text-align: left;
             width: 100%;
             background: #0a0a0a;
+        }
+        @media (max-width: 768px) {
+            .festival-info {
+                padding: 5rem 0;
+            }
         }
 
         .festival-info-inner {
@@ -651,23 +655,16 @@
             color: #c9a962;
         }
 
-        @media (max-width: 768px) {
-            .festival-info {
-                padding: 5rem 0;
-            }
-        }
-
         /* Important Dates Section */
         .important-dates-section {
-            margin-top: 6rem;
+            margin-top: 0;
             padding: 4rem 0;
-            border-top: 1px solid rgba(201, 169, 98, 0.15);
             text-align: left;
             width: 100%;
         }
         @media (max-width: 768px) {
             .important-dates-section {
-                margin-top: 4rem;
+                margin-top: 0;
                 padding: 3rem 0;
             }
         }
@@ -873,6 +870,54 @@
 
         .submissions-button:hover .submissions-arrow {
             transform: translateX(4px);
+        }
+
+        /* Section Separator */
+        .section-separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 4rem 0;
+            background: #0a0a0a;
+        }
+
+        .separator-line {
+            flex: 0 0 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201, 169, 98, 0.4), transparent);
+        }
+
+        .separator-icon {
+            font-size: 1.2rem;
+            color: #c9a962;
+            opacity: 0.6;
+            animation: separator-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes separator-pulse {
+            0%, 100% {
+                opacity: 0.4;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-separator {
+                padding: 3rem 0;
+            }
+
+            .separator-line {
+                flex: 0 0 50px;
+            }
+
+            .separator-icon {
+                font-size: 1rem;
+            }
         }
 
         /* FAQ Section */

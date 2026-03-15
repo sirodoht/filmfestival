@@ -33,12 +33,17 @@
             padding: 2rem 3rem;
             z-index: 100;
         }
-
         @media (max-width: 768px) {
             .nav {
                 padding: 1.5rem 1.5rem;
             }
+        }
 
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+        @media (max-width: 768px) {
             .nav-links {
                 display: none;
                 position: fixed;
@@ -57,12 +62,37 @@
             .nav-links.active {
                 display: flex;
             }
+        }
+        @media (min-width: 769px) {
+            .nav-links {
+                display: flex;
+                gap: 2.5rem;
+            }
+        }
 
+        .nav-link {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            color: #c9a962;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: opacity 0.3s ease;
+        }
+        @media (max-width: 768px) {
             .nav-link {
                 font-size: 1.2rem;
                 letter-spacing: 0.2em;
             }
+        }
 
+        .nav-link:hover {
+            opacity: 0.7;
+        }
+
+        .nav-hamburger {
+            display: none;
+        }
+        @media (max-width: 768px) {
             .nav-hamburger {
                 display: flex;
                 flex-direction: column;
@@ -92,15 +122,9 @@
                 transform: rotate(-45deg) translate(4px, -4px);
             }
         }
-
         @media (min-width: 769px) {
             .nav-hamburger {
                 display: none;
-            }
-
-            .nav-links {
-                display: flex;
-                gap: 2.5rem;
             }
         }
 
@@ -122,19 +146,6 @@
         .nav-logo svg path,
         .nav-logo svg rect {
             fill: #e8e6e3;
-        }
-
-        .nav-link {
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
-            color: #c9a962;
-            text-decoration: none;
-            text-transform: uppercase;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-link:hover {
-            opacity: 0.7;
         }
 
         /* Main Content Area */
@@ -173,6 +184,12 @@
             transition: opacity 0.3s ease;
             z-index: 0;
         }
+        @media (max-width: 768px) {
+            .hero-spotlight {
+                width: 400px;
+                height: 400px;
+            }
+        }
 
         .hero-content {
             position: relative;
@@ -181,12 +198,6 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-        }
-        @media (max-width: 768px) {
-            .hero-spotlight {
-                width: 400px;
-                height: 400px;
-            }
         }
 
         .hero-tagline {
@@ -226,7 +237,6 @@
             color: #8a8580;
             text-transform: uppercase;
         }
-
         @media (max-width: 768px) {
             .hero-meta {
                 flex-direction: column;
@@ -446,13 +456,17 @@
             background: linear-gradient(180deg, #0f0f0f 0%, #0a0a0a 100%);
             border-top: 1px solid rgba(201, 169, 98, 0.1);
         }
+        @media (max-width: 768px) {
+            .theme-section {
+                padding: 5rem 0;
+            }
+        }
 
         .theme-section-inner {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 3rem;
         }
-
         @media (max-width: 768px) {
             .theme-section-inner {
                 padding: 0 1.5rem;
@@ -485,7 +499,6 @@
             text-transform: uppercase;
             line-height: 1;
         }
-
         @media (max-width: 768px) {
             .theme-word {
                 font-size: clamp(3rem, 12vw, 8rem);
@@ -499,6 +512,11 @@
             margin-top: -0.5rem;
             position: absolute;
         }
+        @media (max-width: 768px) {
+            .theme-icon {
+                font-size: 1.5rem;
+            }
+        }
 
         .theme-icon-paw-above {
             opacity: 0;
@@ -509,6 +527,12 @@
             filter: blur(4px);
             animation: paw-mystical 8s ease-in-out 3s infinite;
         }
+        @media (max-width: 768px) {
+            .theme-icon-paw-above {
+                top: -2.5rem;
+                right: 10%;
+            }
+        }
 
         .theme-icon-paw-left {
             opacity: 0;
@@ -517,6 +541,11 @@
             filter: blur(4px);
             animation: paw-mystical 8s ease-in-out 0s infinite;
         }
+        @media (max-width: 768px) {
+            .theme-icon-paw-left {
+                transform: translateX(-45px) translateY(10px);
+            }
+        }
 
         .theme-icon-paw-center {
             opacity: 0;
@@ -524,6 +553,11 @@
             z-index: 2;
             filter: blur(4px);
             animation: paw-mystical 8s ease-in-out 1.5s infinite;
+        }
+        @media (max-width: 768px) {
+            .theme-icon-paw-center {
+                transform: translateX(0) translateY(-8px);
+            }
         }
 
         @keyframes paw-mystical {
@@ -558,19 +592,6 @@
             .theme-icon {
                 font-size: 1.5rem;
             }
-
-            .theme-icon-paw-above {
-                top: -2.5rem;
-                right: 10%;
-            }
-
-            .theme-icon-paw-left {
-                transform: translateX(-45px) translateY(10px);
-            }
-
-            .theme-icon-paw-center {
-                transform: translateX(0) translateY(-8px);
-            }
         }
 
         .theme-icon-wrapper {
@@ -589,12 +610,6 @@
             color: #999;
             max-width: 800px;
             margin: 0;
-        }
-
-        @media (max-width: 768px) {
-            .theme-section {
-                padding: 5rem 0;
-            }
         }
 
         /* Festival Info Section */
@@ -616,7 +631,6 @@
             margin: 0 auto;
             padding: 0 3rem;
         }
-
         @media (max-width: 768px) {
             .festival-info-inner {
                 padding: 0 1.5rem;
@@ -860,7 +874,6 @@
             text-transform: uppercase;
             letter-spacing: 0.08em;
         }
-
         @media (max-width: 768px) {
             .timeline-title {
                 font-size: 0.9rem;
@@ -875,7 +888,6 @@
             text-transform: none;
             line-height: 1.5;
         }
-
         @media (max-width: 768px) {
             .timeline-description {
                 font-size: 0.75rem;
@@ -935,7 +947,6 @@
             max-width: 550px;
             margin: 0 auto 2.5rem;
         }
-
         @media (max-width: 768px) {
             .submissions-description {
                 font-size: 1rem;
@@ -978,11 +989,21 @@
             padding: 4rem 0;
             background: #0a0a0a;
         }
+        @media (max-width: 768px) {
+            .section-separator {
+                padding: 3rem 0;
+            }
+        }
 
         .separator-line {
             flex: 0 0 80px;
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(201, 169, 98, 0.4), transparent);
+        }
+        @media (max-width: 768px) {
+            .separator-line {
+                flex: 0 0 50px;
+            }
         }
 
         .separator-icon {
@@ -990,6 +1011,11 @@
             color: #c9a962;
             opacity: 0.6;
             animation: separator-pulse 3s ease-in-out infinite;
+        }
+        @media (max-width: 768px) {
+            .separator-icon {
+                font-size: 1rem;
+            }
         }
 
         @keyframes separator-pulse {
@@ -1000,20 +1026,6 @@
             50% {
                 opacity: 0.8;
                 transform: scale(1.1);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .section-separator {
-                padding: 3rem 0;
-            }
-
-            .separator-line {
-                flex: 0 0 50px;
-            }
-
-            .separator-icon {
-                font-size: 1rem;
             }
         }
 
@@ -1031,7 +1043,6 @@
             margin: 0 auto;
             padding: 0 3rem;
         }
-
         @media (max-width: 768px) {
             .faq-inner {
                 padding: 0 1.5rem;
@@ -1089,7 +1100,6 @@
             margin: 0;
             font-weight: 400;
         }
-
         @media (max-width: 768px) {
             .faq-question-text {
                 font-size: 0.9rem;
@@ -1179,7 +1189,6 @@
             padding: 0 3rem;
             text-align: center;
         }
-
         @media (max-width: 768px) {
             .footer-inner {
                 padding: 0 1.5rem;

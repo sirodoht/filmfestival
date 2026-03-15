@@ -310,6 +310,75 @@
             color: #0a0a0a;
         }
 
+        /* Theme Section */
+        .theme-section {
+            margin-top: 0;
+            padding: 8rem 0;
+            text-align: center;
+            width: 100%;
+            background: #0a0a0a;
+            border-bottom: 1px solid rgba(201, 169, 98, 0.15);
+        }
+
+        .theme-section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .theme-section-inner {
+                padding: 0 1.5rem;
+            }
+        }
+
+        .theme-section-title {
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            color: #c9a962;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            font-weight: 400;
+            text-align: left;
+        }
+
+        .theme-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .theme-word {
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            color: #f5f3f0;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        @media (max-width: 768px) {
+            .theme-word {
+                font-size: clamp(3rem, 12vw, 8rem);
+            }
+        }
+
+        .theme-description {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #999;
+            max-width: 600px;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .theme-section {
+                padding: 5rem 0;
+            }
+        }
+
         /* Festival Info Section */
         .festival-info {
             margin-top: 0;
@@ -860,7 +929,10 @@
     <nav class="nav">
         <a href="{% url 'main:index' %}" class="nav-logo">HFFF</a>
         <div class="nav-links">
-            <a href="{% url 'main:about' %}" class="nav-link">About</a>
+            <a href="{% url 'main:index' %}#theme" class="nav-link">Theme</a>
+            <a href="{% url 'main:index' %}#about" class="nav-link">About</a>
+            <a href="{% url 'main:index' %}#dates" class="nav-link">Dates</a>
+            <a href="{% url 'main:index' %}#faq" class="nav-link">FAQ</a>
             <a href="{% url 'main:submit' %}" class="nav-link">Open Call</a>
         </div>
     </nav>

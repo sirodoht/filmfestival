@@ -1,0 +1,16 @@
+[project]
+name = "filmfestival"
+version = "0.1.0"
+description = "heartfort film festival website"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django>=6.0.3",
+    "gunicorn>=25.1.0",
+]
+
+[dependency-groups]
+dev = [
+    "djade>=1.9.0",
+    "ruff>=0.15.6",
+]

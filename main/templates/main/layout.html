@@ -104,7 +104,7 @@
             letter-spacing: 0.08em;
             color: #f5f3f0;
             line-height: 1.1;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             margin-top: 0;
             text-transform: uppercase;
         }
@@ -192,6 +192,11 @@
             font-style: italic;
             letter-spacing: 0.1em;
             color: #c9a962;
+        }
+
+        .film-festival {
+            letter-spacing: 0.08em;
+            color: #f5f3f0;
         }
 
         .logo-line-2 {
@@ -340,7 +345,6 @@
             gap: 4rem;
             align-items: start;
         }
-
         @media (max-width: 768px) {
             .festival-info-content {
                 grid-template-columns: 1fr;
@@ -689,7 +693,7 @@
             content: '';
             position: absolute;
             background: #c9a962;
-            transition: transform 0.3s ease;
+            transition: transform 0.1s ease;
         }
 
         .faq-icon::before {
@@ -713,14 +717,18 @@
         }
 
         .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s ease;
         }
 
         .faq-item.active .faq-answer {
-            max-height: 500px;
+            grid-template-rows: 1fr;
             padding-bottom: 1.5rem;
+        }
+
+        .faq-answer-inner {
+            overflow: hidden;
         }
 
         .faq-answer-text {
@@ -730,7 +738,6 @@
             line-height: 1.6;
             margin: 0;
         }
-
         @media (max-width: 768px) {
             .faq-answer-text {
                 font-size: 0.85rem;

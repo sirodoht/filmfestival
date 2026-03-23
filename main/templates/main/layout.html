@@ -1029,6 +1029,72 @@
             }
         }
 
+        /* Submit CTA Section */
+        .submit-cta-section {
+            margin-top: 2rem;
+            padding: 5rem 0;
+            text-align: center;
+            width: 100%;
+            background: linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 50%, #0a0a0a 100%);
+        }
+        @media (max-width: 768px) {
+            .submit-cta-section {
+                padding: 3rem 0;
+            }
+        }
+
+        .submit-cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+        @media (max-width: 768px) {
+            .submit-cta-inner {
+                padding: 0 1.5rem;
+            }
+        }
+
+        .submit-cta-title {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            color: #e8e6e3;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .submit-cta-description {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: #7a7269;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .submit-cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 2.5rem;
+            background: #e8e6e3;
+            color: #0a0a0a;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+        }
+
+        .submit-cta-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .submit-cta-button:hover .submit-cta-arrow {
+            transform: translateX(4px);
+        }
+
         /* FAQ Section */
         .faq-section {
             margin-top: 3rem;
@@ -1170,6 +1236,235 @@
             }
         }
 
+        /* Form Styles */
+        .form-section {
+            padding: 10rem 2rem 6rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            .form-section {
+                padding: 8rem 1.5rem 4rem;
+            }
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .form-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: #e8e6e3;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .form-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: #7a7269;
+            line-height: 1.6;
+        }
+
+        .submission-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            color: #c9a962;
+            text-transform: uppercase;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            padding: 1.1rem 1.25rem;
+            background: #141414;
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            color: #e8e6e3;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            border-color: #c9a962;
+            box-shadow: 0 0 0 1px rgba(201, 169, 98, 0.2);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #5a5550;
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23c9a962' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 3rem;
+        }
+
+        .form-select option {
+            background: #141414;
+            color: #e8e6e3;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-help-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: #5a5550;
+            margin-top: 0.25rem;
+        }
+
+        .form-error {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: #c9a962;
+            margin-top: 0.25rem;
+        }
+
+        .form-submit {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 1.25rem 3rem;
+            background: transparent;
+            border: 1px solid #c9a962;
+            color: #c9a962;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-top: 1rem;
+        }
+
+        .form-submit:hover {
+            background: #c9a962;
+            color: #0a0a0a;
+        }
+
+        .form-submit:active {
+            transform: translateY(1px);
+        }
+
+        .form-checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .form-checkbox {
+            width: 20px;
+            height: 20px;
+            margin: 0;
+            cursor: pointer;
+            accent-color: #c9a962;
+            flex-shrink: 0;
+        }
+
+        .form-checkbox-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: #e8e6e3;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        /* Success Page */
+        .success-section {
+            min-height: calc(100vh - 200px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 10rem 2rem 6rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            .success-section {
+                padding: 8rem 1.5rem 4rem;
+            }
+        }
+
+        .success-icon {
+            font-size: 3rem;
+            color: #c9a962;
+            margin-bottom: 2rem;
+        }
+
+        .success-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: #e8e6e3;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .success-message {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: #8a8580;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+
+        .success-highlight {
+            color: #c9a962;
+            font-weight: 500;
+        }
+
+        .success-cta {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border: 1px solid #c9a962;
+            color: #c9a962;
+            text-decoration: none;
+            letter-spacing: 0.2em;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+        }
+
+        .success-cta:hover {
+            background: #c9a962;
+            color: #0a0a0a;
+        }
+
         /* Footer */
         .footer {
             width: 100%;
@@ -1226,6 +1521,7 @@
             <a href="{% url 'main:index' %}#about" class="nav-link" onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.nav-hamburger').classList.remove('active');">About</a>
             <a href="{% url 'main:index' %}#dates" class="nav-link" onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.nav-hamburger').classList.remove('active');">Dates</a>
             <a href="{% url 'main:index' %}#faq" class="nav-link" onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.nav-hamburger').classList.remove('active');">FAQ</a>
+            <a href="{% url 'main:submit' %}" class="nav-link" onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.nav-hamburger').classList.remove('active');">Submit</a>
         </div>
     </nav>
 

@@ -106,21 +106,14 @@
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-date">16 March 2026</div>
+                        <div class="timeline-date">23 March 2026</div>
                         <div class="timeline-title">Open Call</div>
                         <div class="timeline-description">Call for entries announced</div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-date">8 July 2026</div>
-                        <div class="timeline-title">Submissions Open</div>
-                        <div class="timeline-description">Begin submitting your films</div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">1 August 2026</div>
+                        <div class="timeline-date">19 July 2026</div>
                         <div class="timeline-title">Submission Deadline</div>
                         <div class="timeline-description">Final date to enter your film</div>
                     </div>
@@ -133,6 +126,22 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="submit-cta-section" id="submit-cta">
+        <div class="submit-cta-inner">
+            <h2 class="submit-cta-title">Submit Your Film</h2>
+            <p class="submit-cta-description">
+                Cut? Submit.
+            </p>
+            <a href="{% url 'main:submit' %}" class="submit-cta-button">
+                Submit
+                <svg class="submit-cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
         </div>
     </div>
 

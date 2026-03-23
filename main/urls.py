@@ -8,4 +8,5 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("about/", views.about, name="about"),
     path("submit/", views.submit, name="submit"),
+    path("submit/success/", views.submit_success, name="submit-success"),
 ]

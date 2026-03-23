@@ -1,0 +1,17 @@
+{% extends "main/layout.html" %}
+
+{% block content %}
+    <section class="success-section">
+        <div class="success-icon">✦</div>
+        <h1 class="success-title">Submission Received</h1>
+        <p class="success-message">
+            Thank you for submitting your film to the Heartfort Flash Film Festival.
+            We've sent a confirmation email with your submission details.
+            <br><br>
+            <span class="success-highlight">
+                Looking forward to seeing you at the screening on 8 August 2026.
+            </span>
+        </p>
+        <a href="{% url 'main:index' %}" class="success-cta">Return Home</a>
+    </section>
+{% endblock content %}

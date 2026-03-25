@@ -4,15 +4,22 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('main', '0007_remove_tshirtorder_shipping_address'),
+        ("main", "0007_remove_tshirtorder_shipping_address"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='submission',
-            name='genre',
-            field=models.CharField(choices=[('narrative', 'Narrative'), ('documentary', 'Documentary'), ('experimental', 'Experimental'), ('animation', 'Animation')], max_length=50),
+            model_name="submission",
+            name="genre",
+            field=models.CharField(
+                choices=[
+                    ("narrative", "Narrative"),
+                    ("documentary", "Documentary"),
+                    ("experimental", "Experimental"),
+                    ("animation", "Animation"),
+                ],
+                max_length=50,
+            ),
         ),
     ]

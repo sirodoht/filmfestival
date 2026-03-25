@@ -4,15 +4,22 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('main', '0004_alter_tshirtorder_size'),
+        ("main", "0004_alter_tshirtorder_size"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='tshirtorder',
-            name='color',
-            field=models.CharField(choices=[('darkgrey', 'Dark Grey'), ('black', 'Black'), ('white', 'White')], default='darkgrey', max_length=20),
+            model_name="tshirtorder",
+            name="color",
+            field=models.CharField(
+                choices=[
+                    ("darkgrey", "Dark Grey"),
+                    ("black", "Black"),
+                    ("white", "White"),
+                ],
+                default="darkgrey",
+                max_length=20,
+            ),
         ),
     ]

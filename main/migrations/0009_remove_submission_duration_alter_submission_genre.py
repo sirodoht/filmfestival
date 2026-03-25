@@ -4,19 +4,18 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('main', '0008_alter_submission_genre'),
+        ("main", "0008_alter_submission_genre"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='submission',
-            name='duration',
+            model_name="submission",
+            name="duration",
         ),
         migrations.AlterField(
-            model_name='submission',
-            name='genre',
+            model_name="submission",
+            name="genre",
             field=models.CharField(max_length=50),
         ),
     ]

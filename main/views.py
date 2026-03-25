@@ -286,6 +286,7 @@ def stripe_webhook(request):
 Thank you for your t-shirt pre-order!
 
 Order Details:
+- Order ID: {order.id}
 - Festival T-Shirt (Size: {order.get_size_display()}, Color: {order.get_color_display()})
 - Quantity: {order.quantity}
 - Total: £{order.amount}

@@ -4,29 +4,56 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Submission',
+            name="Submission",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=200)),
-                ('director_name', models.CharField(max_length=200)),
-                ('email', models.EmailField(max_length=254)),
-                ('duration', models.PositiveIntegerField(help_text='Duration in seconds (max 90)')),
-                ('synopsis', models.TextField()),
-                ('genre', models.CharField(choices=[('narrative', 'Narrative'), ('documentary', 'Documentary'), ('experimental', 'Experimental'), ('animation', 'Animation')], max_length=20)),
-                ('year_produced', models.PositiveIntegerField()),
-                ('film_link', models.URLField(help_text='Link to your film (Vimeo, YouTube, etc.)')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=200)),
+                ("director_name", models.CharField(max_length=200)),
+                ("email", models.EmailField(max_length=254)),
+                (
+                    "duration",
+                    models.PositiveIntegerField(
+                        help_text="Duration in seconds (max 90)"
+                    ),
+                ),
+                ("synopsis", models.TextField()),
+                (
+                    "genre",
+                    models.CharField(
+                        choices=[
+                            ("narrative", "Narrative"),
+                            ("documentary", "Documentary"),
+                            ("experimental", "Experimental"),
+                            ("animation", "Animation"),
+                        ],
+                        max_length=20,
+                    ),
+                ),
+                ("year_produced", models.PositiveIntegerField()),
+                (
+                    "film_link",
+                    models.URLField(
+                        help_text="Link to your film (Vimeo, YouTube, etc.)"
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'ordering': ['-created_at'],
+                "ordering": ["-created_at"],
             },
         ),
     ]

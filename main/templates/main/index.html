@@ -145,6 +145,26 @@
         </div>
     </div>
 
+    <div class="tshirt-cta-section" id="tshirt">
+        <div class="tshirt-cta-inner">
+            <h2 class="tshirt-cta-title">Merch</h2>
+            <p class="tshirt-cta-description">
+                Limited quantities. Pre-order only. Receive at Festival Day.
+                <br>Designs will be released soon.
+            </p>
+            <form action="{% url 'main:tshirt-order' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="tshirt-cta-button">
+                    Pre-Order T-Shirt
+                    <svg class="tshirt-cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
     <div class="faq-section" id="faq">
         <div class="faq-inner">
             <div class="faq-header">

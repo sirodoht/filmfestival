@@ -9,4 +9,8 @@ urlpatterns = [
     path("about/", views.about, name="about"),
     path("submit/", views.submit, name="submit"),
     path("submit/success/", views.submit_success, name="submit-success"),
+    path("tshirt/order/", views.TShirtPurchaseView.as_view(), name="tshirt-order"),
+    path("tshirt/success/", views.tshirt_success, name="tshirt-success"),
+    path("tshirt/cancel/", views.tshirt_cancel, name="tshirt-cancel"),
+    path("webhook/stripe/", views.stripe_webhook, name="stripe-webhook"),
 ]

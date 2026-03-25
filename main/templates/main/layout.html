@@ -430,21 +430,41 @@
             margin-top: 3rem;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 3rem;
+        /* Standard Button */
+        .button,
+        .cta-button,
+        .success-cta,
+        .tshirt-cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: transparent;
             border: 1px solid #c9a962;
             color: #c9a962;
             text-decoration: none;
+            font-size: 0.8rem;
             letter-spacing: 0.2em;
-            font-size: 0.9rem;
             text-transform: uppercase;
             transition: all 0.4s ease;
+            cursor: pointer;
         }
 
-        .cta-button:hover {
+        .button:hover,
+        .cta-button:hover,
+        .success-cta:hover,
+        .tshirt-cta-button:hover {
             background: #c9a962;
             color: #0a0a0a;
+        }
+
+        .button-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .button:hover .button-arrow {
+            transform: translateX(4px);
         }
 
         /* Theme Section */
@@ -1095,6 +1115,54 @@
             transform: translateX(4px);
         }
 
+        /* T-Shirt CTA Section */
+        .tshirt-cta-section {
+            margin-top: 0;
+            padding: 5rem 0;
+            text-align: center;
+            width: 100%;
+            background: linear-gradient(180deg, #0f0f0f 0%, #0a0a0a 100%);
+        }
+        @media (max-width: 768px) {
+            .tshirt-cta-section {
+                padding: 3rem 0;
+            }
+        }
+
+        .tshirt-cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+        @media (max-width: 768px) {
+            .tshirt-cta-inner {
+                padding: 0 1.5rem;
+            }
+        }
+
+        .tshirt-cta-title {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            color: #e8e6e3;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .tshirt-cta-description {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: #7a7269;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tshirt-cta-button:hover .tshirt-cta-arrow {
+            transform: translateX(4px);
+        }
+
         /* FAQ Section */
         .faq-section {
             margin-top: 3rem;
@@ -1403,6 +1471,61 @@
             cursor: pointer;
         }
 
+        /* T-Shirt Order Styles */
+        .order-summary {
+            background: #141414;
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+
+        .order-total-label {
+            font-family: 'Cinzel', serif;
+            color: #7a7269;
+            letter-spacing: 0.1em;
+        }
+
+        .order-total-amount {
+            font-family: 'Cinzel', serif;
+            color: #c9a962;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .order-details {
+            background: #141414;
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+            max-width: 400px;
+        }
+
+        .order-details-title {
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            color: #c9a962;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .order-details-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: #e8e6e3;
+            line-height: 1.6;
+            margin: 0;
+        }
+
         /* Success Page */
         .success-section {
             min-height: calc(100vh - 200px);
@@ -1446,23 +1569,6 @@
         .success-highlight {
             color: #c9a962;
             font-weight: 500;
-        }
-
-        .success-cta {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            border: 1px solid #c9a962;
-            color: #c9a962;
-            text-decoration: none;
-            letter-spacing: 0.2em;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            transition: all 0.4s ease;
-        }
-
-        .success-cta:hover {
-            background: #c9a962;
-            color: #0a0a0a;
         }
 
         /* Footer */
@@ -1520,7 +1626,7 @@
             <a href="{% url 'main:index' %}#theme" class="nav-link" onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.nav-hamburger').classList.remove('active');">Theme</a>
             <a href="{% url 'main:index' %}#about" class="nav-link" onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.nav-hamburger').classList.remove('active');">About</a>
             <a href="{% url 'main:index' %}#dates" class="nav-link" onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.nav-hamburger').classList.remove('active');">Dates</a>
-            <a href="{% url 'main:index' %}#faq" class="nav-link" onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.nav-hamburger').classList.remove('active');">FAQ</a>
+            <a href="{% url 'main:index' %}#tshirt" class="nav-link" onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.nav-hamburger').classList.remove('active');">Merch</a>
             <a href="{% url 'main:submit' %}" class="nav-link" onclick="document.querySelector('.nav-links').classList.remove('active'); document.querySelector('.nav-hamburger').classList.remove('active');">Submit</a>
         </div>
     </nav>
@@ -1533,7 +1639,7 @@
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-logo">Heartfort Flash Film Festival</div>
-            <div class="footer-copyright">🄯 No Rights Reserved. CC0 1.0 Universal.</div>
+            <div class="footer-copyright">No Rights Reserved. CC0 1.0 Universal.</div>
         </div>
     </footer>
 

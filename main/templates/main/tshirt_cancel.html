@@ -1,0 +1,18 @@
+{% extends "main/layout.html" %}
+
+{% block title %}Order Cancelled - Heartfort Flash Film Festival{% endblock %}
+
+{% block content %}
+    <section class="success-section">
+        <div class="success-icon" style="color: #7a7269;">✦</div>
+        <h1 class="success-title">Pre-Order Cancelled</h1>
+        <p class="success-message">
+            Your pre-order was cancelled. No payment was processed.
+        </p>
+        <form action="{% url 'main:tshirt-order' %}" method="post" style="margin-bottom: 1rem;">
+            {% csrf_token %}
+            <button type="submit" class="success-cta" style="width: 100%; border: none; cursor: pointer;">Try Again</button>
+        </form>
+        <a href="{% url 'main:index' %}" class="success-cta" style="background: transparent; border: 1px solid #c9a962; color: #c9a962;">Return Home</a>
+    </section>
+{% endblock content %}

@@ -4,24 +4,26 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('main', '0001_initial'),
+        ("main", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='submission',
-            name='year_produced',
+            model_name="submission",
+            name="year_produced",
         ),
         migrations.AddField(
-            model_name='submission',
-            name='consent',
-            field=models.BooleanField(default=False, help_text='I give permission to use the above info for promotional material'),
+            model_name="submission",
+            name="consent",
+            field=models.BooleanField(
+                default=False,
+                help_text="I give permission to use the above info for promotional material",
+            ),
         ),
         migrations.AlterField(
-            model_name='submission',
-            name='genre',
+            model_name="submission",
+            name="genre",
             field=models.CharField(max_length=50),
         ),
     ]

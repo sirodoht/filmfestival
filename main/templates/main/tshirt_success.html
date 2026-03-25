@@ -1,0 +1,33 @@
+{% extends "main/layout.html" %}
+
+{% block title %}Order Confirmed - Heartfort Flash Film Festival{% endblock %}
+
+{% block content %}
+    <section class="success-section">
+        <div class="success-icon">✦</div>
+        <h1 class="success-title">Order Confirmed</h1>
+
+        {% if order %}
+            <p class="success-message">
+                Thank you for your pre-order! We've sent a confirmation email to {{ order.email }}.
+                <br><br>
+                <span class="success-highlight">
+                    {{ order.quantity }} x {{ order.get_color_display }} T-Shirt ({{ order.get_size_display }})
+                </span>
+                <br><br>
+                Total: £{{ order.amount }}
+                <br><br>
+                Pick up your t-shirt at the festival on 8 August 2026 at Heartfort, London.
+            </p>
+        {% else %}
+            <p class="success-message">
+                Thank you for your pre-order! We've sent a confirmation email.
+            </p>
+        {% endif %}
+
+        <form action="{% url 'main:tshirt-order' %}" method="post" class="success-order-form">
+            {% csrf_token %}
+            <button type="submit" class="success-cta">Pre-Order another for your friend</button>
+        </form>
+    </section>
+{% endblock content %}

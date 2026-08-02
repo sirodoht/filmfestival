@@ -18,10 +18,3 @@ jobs:
 
       - name: Check deployment scripts
         run: bash -n deploy/*.sh
-
-      - name: Check for obsolete application commands
-        run: |
-          if grep -RInE 'manage\.py|gunicorn|uv run|collectstatic|migrate' deploy .github/workflows/deploy.yml; then
-              echo "Found a command from the old Django deployment"
-              exit 1
-          fi

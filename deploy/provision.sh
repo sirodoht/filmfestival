@@ -39,12 +39,9 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TEMP_CADDYFILE="$(mktemp)"
 trap 'rm -f "$TEMP_CADDYFILE"' EXIT
 sed "s/yourdomain\.com/$SITE_DOMAIN/" "$SCRIPT_DIR/Caddyfile" > "$TEMP_CADDYFILE"
-scp "$TEMP_CADDYFILE" "$REMOTE_HOST:/etc/caddy/Caddyfile"
-ssh "$REMOTE_HOST" 'caddy fmt --overwrite /etc/caddy/Caddyfile && caddy validate --config /etc/caddy/Caddyfile'
+scp "$TEMP_CADDYFILE" "$REMOTE_HOST:/etc/caddy/filmfestival.caddy.next"
+ssh "$REMOTE_HOST" 'caddy fmt --overwrite /etc/caddy/filmfestival.caddy.next && caddy validate --adapter caddyfile --config /etc/caddy/filmfestival.caddy.next && install -m 0644 /etc/caddy/filmfestival.caddy.next /etc/caddy/filmfestival.caddy && rm -f /etc/caddy/filmfestival.caddy.next && caddy validate --config /etc/caddy/Caddyfile'
 ssh "$REMOTE_HOST" 'systemctl enable --now caddy && systemctl reload caddy'
-
-echo "=== Removing obsolete application service ==="
-ssh "$REMOTE_HOST" 'systemctl disable --now filmfestival.service >/dev/null 2>&1 || true; rm -f /etc/systemd/system/filmfestival.service; systemctl daemon-reload'
 
 echo "=== Provisioning complete! ==="
 echo "Add this deploy key to the GitHub repository, then clone it into /var/www/filmfestival:"

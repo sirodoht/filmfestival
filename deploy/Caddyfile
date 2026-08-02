@@ -1,16 +1,8 @@
 yourdomain.com {
-	route {
-		file_server /static/* {
-			root /var/www/filmfestival
-		}
-		file_server /media/* {
-			root /var/www/filmfestival
-		}
-		reverse_proxy 127.0.0.1:5000
-	}
+	root * /var/www/filmfestival
 	encode zstd gzip
-	tls {
-		on_demand
+	file_server {
+		hide /var/www/filmfestival/.git /var/www/filmfestival/.github /var/www/filmfestival/deploy /var/www/filmfestival/.env*
 	}
 	log {
 		output stdout

@@ -1,48 +1,51 @@
-#!/bin/bash
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
 
-if [ -z "$1" ]; then
-    echo "Usage: $0 <hostname>"
-    echo "Example: $0 root@yourdomain.com"
+if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then
+    echo "Usage: $0 <ssh-host> [site-domain]"
+    echo "Example: $0 root@203.0.113.10 festival.example.com"
     exit 1
 fi
 
-HOST="$1"
+REMOTE_HOST="$1"
+SITE_DOMAIN="${2:-${REMOTE_HOST##*@}}"
+
+if [[ ! "$SITE_DOMAIN" =~ ^[A-Za-z0-9.-]+$ ]]; then
+    echo "Invalid site domain: $SITE_DOMAIN"
+    exit 1
+fi
 
 echo "=== Installing Caddy ==="
-ssh $HOST 'apt install -y debian-keyring debian-archive-keyring apt-transport-https curl'
-ssh $HOST "curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg"
-ssh $HOST "curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list"
-ssh $HOST 'chmod o+r /usr/share/keyrings/caddy-stable-archive-keyring.gpg'
-ssh $HOST 'chmod o+r /etc/apt/sources.list.d/caddy-stable.list'
-ssh $HOST 'apt update && apt install -y caddy'
+ssh "$REMOTE_HOST" 'apt-get update && apt-get install -y debian-keyring debian-archive-keyring apt-transport-https curl'
+ssh "$REMOTE_HOST" "curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor --yes -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg"
+ssh "$REMOTE_HOST" "curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list"
+ssh "$REMOTE_HOST" 'chmod o+r /usr/share/keyrings/caddy-stable-archive-keyring.gpg /etc/apt/sources.list.d/caddy-stable.list'
+ssh "$REMOTE_HOST" 'apt-get update && apt-get install -y caddy'
 
 echo "=== Creating www directory ==="
-ssh $HOST 'mkdir -p /var/www && chmod 0755 /var/www'
+ssh "$REMOTE_HOST" 'mkdir -p /var/www/filmfestival && chmod 0755 /var/www /var/www/filmfestival'
 
 echo "=== Creating deploy user ==="
-ssh $HOST 'useradd -m -s /bin/bash -N -G sudo,www-data deploy && usermod -L deploy'
+ssh "$REMOTE_HOST" 'id deploy >/dev/null 2>&1 || useradd -m -s /bin/bash -N -G www-data deploy; usermod -a -G www-data deploy; usermod -L deploy'
 
 echo "=== Generating SSH key for deploy user ==="
-ssh $HOST 'mkdir -p /home/deploy/.ssh && su - deploy -c "ssh-keygen -t ed25519 -f /home/deploy/.ssh/id_ed25519 -N \"\"" && chown -R deploy:deploy /home/deploy/.ssh'
+ssh "$REMOTE_HOST" 'install -d -m 0700 -o deploy -g deploy /home/deploy/.ssh && test -f /home/deploy/.ssh/id_ed25519 || su - deploy -c "ssh-keygen -t ed25519 -f /home/deploy/.ssh/id_ed25519 -N \"\""'
 
 echo "=== Setting www ownership ==="
-ssh $HOST 'chown -R deploy:www-data /var/www'
+ssh "$REMOTE_HOST" 'chown -R deploy:www-data /var/www/filmfestival'
 
-echo "=== Installing uv ==="
-ssh $HOST 'curl -LsSf https://astral.sh/uv/0.10.7/install.sh | sh'
-ssh $HOST 'su - deploy -c "curl -LsSf https://astral.sh/uv/0.10.7/install.sh | sh"'
-
-echo "=== Installing systemd service ==="
+echo "=== Installing Caddy configuration ==="
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-scp "$SCRIPT_DIR/filmfestival.service" $HOST:/etc/systemd/system/filmfestival.service
-scp "$SCRIPT_DIR/Caddyfile" $HOST:/etc/caddy/Caddyfile
-ssh $HOST 'mkdir -p /run && chown deploy:www-data /run'
-ssh $HOST 'systemctl daemon-reload'
-ssh $HOST 'systemctl enable filmfestival.service'
+TEMP_CADDYFILE="$(mktemp)"
+trap 'rm -f "$TEMP_CADDYFILE"' EXIT
+sed "s/yourdomain\.com/$SITE_DOMAIN/" "$SCRIPT_DIR/Caddyfile" > "$TEMP_CADDYFILE"
+scp "$TEMP_CADDYFILE" "$REMOTE_HOST:/etc/caddy/Caddyfile"
+ssh "$REMOTE_HOST" 'caddy fmt --overwrite /etc/caddy/Caddyfile && caddy validate --config /etc/caddy/Caddyfile'
+ssh "$REMOTE_HOST" 'systemctl enable --now caddy && systemctl reload caddy'
 
-echo ""
+echo "=== Removing obsolete application service ==="
+ssh "$REMOTE_HOST" 'systemctl disable --now filmfestival.service >/dev/null 2>&1 || true; rm -f /etc/systemd/system/filmfestival.service; systemctl daemon-reload'
+
 echo "=== Provisioning complete! ==="
-echo "Service 'filmfestival' installed and enabled (not started yet)."
-echo "Deploy your code to /var/www/filmfestival and run:"
-echo "  systemctl start filmfestival"
+echo "Add this deploy key to the GitHub repository, then clone it into /var/www/filmfestival:"
+ssh "$REMOTE_HOST" 'cat /home/deploy/.ssh/id_ed25519.pub'

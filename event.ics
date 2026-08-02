@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+PRODID:-//Heartfort//Flash Film Festival 2026//EN
+BEGIN:VEVENT
+UID:hfff-2026-08-08@heartfortfilmfestival.com
+DTSTAMP:20260802T220000Z
+DTSTART:20260808T110000Z
+DTEND:20260808T160000Z
+SUMMARY:Heartfort Flash Film Festival 2026
+DESCRIPTION:Make a tiny film. Watch it with us. Same day! Theme: cats.
+ Aim for 90 seconds.
+LOCATION:Heartfort\, London
+URL:https://heartfortfilmfestival.com/
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

@@ -1,4 +1,4 @@
-heartfortfilmfestival.com {
+yourdomain.com {
 	root * /var/www/filmfestival
 	encode zstd gzip
 	file_server {

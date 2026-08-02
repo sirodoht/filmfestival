@@ -3,11 +3,731 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Hello, world!</title>
+        <meta name="theme-color" content="#0b0b0b">
+        <meta
+            name="description"
+            content="Heartfort Flash Film Festival — make a 90-second film about cats, then watch the premieres on Saturday 8 August."
+        >
+        <meta property="og:title" content="Heartfort Flash Film Festival — Cats in 90 Seconds">
+        <meta
+            property="og:description"
+            content="The theme is cats. The recommended film length is 90 seconds. Saturday 8 August at Heartfort."
+        >
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://heartfortfilmfestival.com/">
+        <meta property="og:image" content="https://heartfortfilmfestival.com/public/og.png">
+        <meta
+            property="og:image:alt"
+            content="Heartfort Flash Film Festival poster: Cats in 90 Seconds, Saturday 8 August."
+        >
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Heartfort Flash Film Festival — Cats in 90 Seconds">
+        <meta
+            name="twitter:description"
+            content="The theme is cats. The recommended film length is 90 seconds. Saturday 8 August at Heartfort."
+        >
+        <meta name="twitter:image" content="https://heartfortfilmfestival.com/public/og.png">
+        <title>Heartfort Flash Film Festival — Cats in 90 Seconds</title>
+        <style>
+            :root {
+                --ink: #0b0b0b;
+                --cream: #f2efe5;
+                --red: #ff4b2b;
+                --acid: #c9ff33;
+                --rule: 1px solid currentColor;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                margin: 0;
+                color: var(--ink);
+                background: var(--cream);
+                font-family: Arial, Helvetica, sans-serif;
+                line-height: 1.15;
+            }
+
+            a {
+                color: inherit;
+            }
+
+            .skip-link {
+                position: fixed;
+                top: 1rem;
+                left: 1rem;
+                z-index: 50;
+                padding: 0.75rem 1rem;
+                color: var(--ink);
+                background: var(--acid);
+                font-size: 0.75rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                transform: translateY(-200%);
+            }
+
+            .skip-link:focus {
+                transform: translateY(0);
+            }
+
+            .site-header {
+                display: grid;
+                grid-template-columns: auto 1fr auto;
+                align-items: center;
+                min-height: 58px;
+                border-bottom: 1px solid var(--cream);
+                color: var(--cream);
+                background: var(--ink);
+                font-size: 0.7rem;
+                font-weight: 800;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+            }
+
+            .wordmark,
+            .date,
+            .site-header a {
+                display: flex;
+                align-items: center;
+                min-height: 58px;
+                padding: 0.75rem clamp(1rem, 3vw, 2rem);
+            }
+
+            .wordmark {
+                border-right: 1px solid var(--cream);
+            }
+
+            .date {
+                justify-content: center;
+            }
+
+            .site-header a {
+                border-left: 1px solid var(--cream);
+                color: var(--ink);
+                background: var(--acid);
+                text-decoration: none;
+            }
+
+            .site-header a:hover,
+            .site-header a:focus-visible {
+                color: var(--cream);
+                background: var(--red);
+            }
+
+            .hero {
+                position: relative;
+                display: grid;
+                grid-template-columns: minmax(0, 1.4fr) minmax(19rem, 0.6fr);
+                min-height: calc(100svh - 58px);
+                overflow: hidden;
+                color: var(--cream);
+                background: var(--ink);
+            }
+
+            .hero-copy {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                min-width: 0;
+                padding: clamp(2.5rem, 7vw, 6.5rem) clamp(1rem, 5vw, 4.5rem);
+                border-right: 1px solid var(--cream);
+            }
+
+            .eyebrow {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                margin: 0 0 2rem;
+                font-size: clamp(0.68rem, 1vw, 0.82rem);
+                font-weight: 800;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+            }
+
+            .eyebrow::before {
+                width: 2.5rem;
+                height: 2px;
+                background: var(--red);
+                content: "";
+            }
+
+            h1 {
+                max-width: 8ch;
+                margin: 0;
+                font-size: clamp(5rem, 13vw, 12rem);
+                font-weight: 900;
+                letter-spacing: -0.095em;
+                line-height: 0.7;
+                text-transform: uppercase;
+            }
+
+            h1 span {
+                display: block;
+            }
+
+            h1 .outline {
+                color: transparent;
+                -webkit-text-stroke: clamp(1px, 0.15vw, 3px) var(--cream);
+            }
+
+            .hero-intro {
+                display: grid;
+                grid-template-columns: auto minmax(12rem, 30rem);
+                align-items: end;
+                gap: clamp(1.5rem, 4vw, 4rem);
+                margin-top: clamp(3rem, 8vw, 7rem);
+            }
+
+            .edition {
+                color: var(--red);
+                font-family: Georgia, "Times New Roman", serif;
+                font-size: clamp(2.5rem, 7vw, 6rem);
+                font-style: italic;
+                line-height: 0.8;
+            }
+
+            .hero-intro p {
+                margin: 0;
+                font-family: Georgia, "Times New Roman", serif;
+                font-size: clamp(1.1rem, 2vw, 1.5rem);
+                line-height: 1.35;
+            }
+
+            .hero-poster {
+                display: grid;
+                grid-template-rows: 1fr auto;
+                min-width: 0;
+                background: var(--red);
+            }
+
+            .cat-mark {
+                display: grid;
+                align-content: center;
+                gap: clamp(2rem, 6vw, 5rem);
+                padding: clamp(2rem, 5vw, 4rem);
+            }
+
+            .ears {
+                display: flex;
+                justify-content: space-between;
+                gap: 2rem;
+            }
+
+            .ear {
+                width: 0;
+                height: 0;
+                border-right: clamp(2.5rem, 5vw, 4rem) solid transparent;
+                border-bottom: clamp(4.5rem, 9vw, 7rem) solid var(--ink);
+                border-left: clamp(2.5rem, 5vw, 4rem) solid transparent;
+            }
+
+            .ear:last-child {
+                transform: scaleX(-1);
+            }
+
+            .eyes {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: clamp(1.25rem, 3vw, 2.5rem);
+            }
+
+            .eye {
+                position: relative;
+                aspect-ratio: 1.9 / 1;
+                overflow: hidden;
+                background: var(--acid);
+                clip-path: polygon(0 50%, 20% 12%, 50% 0, 80% 12%, 100% 50%, 80% 88%, 50% 100%, 20% 88%);
+            }
+
+            .eye::after {
+                position: absolute;
+                top: 8%;
+                bottom: 8%;
+                left: calc(50% - 5px);
+                width: 10px;
+                border-radius: 50%;
+                background: var(--ink);
+                content: "";
+            }
+
+            .whiskers {
+                display: grid;
+                gap: 1rem;
+            }
+
+            .whiskers span {
+                display: block;
+                height: 1px;
+                background: var(--ink);
+            }
+
+            .whiskers span:first-child {
+                transform: rotate(7deg);
+            }
+
+            .whiskers span:last-child {
+                transform: rotate(-7deg);
+            }
+
+            .runtime {
+                padding: clamp(1.5rem, 4vw, 3rem);
+                border-top: 1px solid var(--ink);
+                color: var(--ink);
+                background: var(--acid);
+            }
+
+            .runtime p {
+                margin: 0;
+                font-size: 0.72rem;
+                font-weight: 900;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+            }
+
+            .runtime strong {
+                display: block;
+                margin: 0.15em 0 0;
+                font-size: clamp(4.8rem, 12vw, 10rem);
+                font-weight: 900;
+                letter-spacing: -0.09em;
+                line-height: 0.72;
+            }
+
+            .runtime strong span {
+                font-size: 0.22em;
+                letter-spacing: 0;
+                text-transform: uppercase;
+            }
+
+            .ticker {
+                overflow: hidden;
+                border-block: 1px solid var(--ink);
+                background: var(--acid);
+            }
+
+            .ticker-track {
+                width: max-content;
+                padding: 0.75rem 0;
+                font-size: clamp(1rem, 2vw, 1.5rem);
+                font-weight: 900;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                animation: ticker 22s linear infinite;
+            }
+
+            @keyframes ticker {
+                to {
+                    transform: translateX(-50%);
+                }
+            }
+
+            .brief {
+                display: grid;
+                grid-template-columns: 0.7fr 1.3fr;
+                border-bottom: 1px solid var(--ink);
+            }
+
+            .brief-heading {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                min-height: 34rem;
+                padding: clamp(2rem, 6vw, 5rem);
+                border-right: 1px solid var(--ink);
+            }
+
+            .section-number {
+                margin: 0;
+                font-size: 0.7rem;
+                font-weight: 900;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+            }
+
+            .brief h2,
+            .programme h2 {
+                margin: 0;
+                font-size: clamp(4rem, 10vw, 9rem);
+                font-weight: 900;
+                letter-spacing: -0.08em;
+                line-height: 0.73;
+                text-transform: uppercase;
+            }
+
+            .brief-rules {
+                display: grid;
+                grid-template-rows: repeat(3, 1fr);
+            }
+
+            .rule {
+                display: grid;
+                grid-template-columns: minmax(7rem, 0.3fr) 1fr;
+                align-items: center;
+                gap: 2rem;
+                padding: clamp(2rem, 5vw, 4rem);
+                border-bottom: 1px solid var(--ink);
+            }
+
+            .rule:last-child {
+                border-bottom: 0;
+            }
+
+            .rule-index {
+                color: var(--red);
+                font-family: Georgia, "Times New Roman", serif;
+                font-size: clamp(3rem, 7vw, 6rem);
+                font-style: italic;
+                line-height: 1;
+            }
+
+            .rule h3 {
+                margin: 0 0 0.4rem;
+                font-size: clamp(2rem, 5vw, 4.5rem);
+                font-weight: 900;
+                letter-spacing: -0.06em;
+                line-height: 0.85;
+                text-transform: uppercase;
+            }
+
+            .rule p {
+                max-width: 35rem;
+                margin: 0;
+                font-family: Georgia, "Times New Roman", serif;
+                font-size: clamp(1rem, 1.8vw, 1.3rem);
+                line-height: 1.4;
+            }
+
+            .programme {
+                color: var(--cream);
+                background: var(--ink);
+            }
+
+            .programme-header {
+                padding: clamp(3.5rem, 8vw, 7rem) clamp(1rem, 5vw, 4.5rem);
+                border-bottom: 1px solid var(--cream);
+            }
+
+            .timeline {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            .timeline li {
+                display: grid;
+                grid-template-columns: minmax(7rem, 0.22fr) 1fr auto;
+                align-items: baseline;
+                gap: clamp(1rem, 4vw, 4rem);
+                padding: clamp(1.25rem, 3vw, 2.25rem) clamp(1rem, 5vw, 4.5rem);
+                border-bottom: 1px solid var(--cream);
+                transition: color 160ms ease, background 160ms ease;
+            }
+
+            .timeline li:hover {
+                color: var(--ink);
+                background: var(--acid);
+            }
+
+            .time {
+                color: var(--red);
+                font-size: clamp(1.4rem, 4vw, 3rem);
+                font-weight: 900;
+                letter-spacing: -0.05em;
+            }
+
+            .timeline li:hover .time {
+                color: var(--ink);
+            }
+
+            .event {
+                font-family: Georgia, "Times New Roman", serif;
+                font-size: clamp(1.4rem, 3vw, 2.7rem);
+            }
+
+            .tag {
+                font-size: 0.65rem;
+                font-weight: 900;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+            }
+
+            .footer {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                align-items: end;
+                gap: 3rem;
+                padding: clamp(3rem, 8vw, 7rem) clamp(1rem, 5vw, 4.5rem);
+                color: var(--ink);
+                background: var(--red);
+            }
+
+            .footer h2 {
+                max-width: 10ch;
+                margin: 0;
+                font-size: clamp(4rem, 11vw, 10rem);
+                font-weight: 900;
+                letter-spacing: -0.085em;
+                line-height: 0.72;
+                text-transform: uppercase;
+            }
+
+            .footer-details {
+                display: grid;
+                gap: 2rem;
+                max-width: 23rem;
+                font-size: 0.72rem;
+                font-weight: 900;
+                letter-spacing: 0.14em;
+                text-align: right;
+                text-transform: uppercase;
+            }
+
+            .footer-details p {
+                margin: 0;
+            }
+
+            @media (max-width: 780px) {
+                .site-header {
+                    grid-template-columns: auto 1fr;
+                }
+
+                .date {
+                    display: none;
+                }
+
+                .hero {
+                    grid-template-columns: 1fr;
+                }
+
+                .hero-copy {
+                    min-height: calc(100svh - 58px);
+                    border-right: 0;
+                    border-bottom: 1px solid var(--cream);
+                }
+
+                .hero-poster {
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: 1fr;
+                }
+
+                .runtime {
+                    display: grid;
+                    align-content: center;
+                    border-top: 0;
+                    border-left: 1px solid var(--ink);
+                }
+
+                .brief {
+                    grid-template-columns: 1fr;
+                }
+
+                .brief-heading {
+                    min-height: 22rem;
+                    border-right: 0;
+                    border-bottom: 1px solid var(--ink);
+                }
+
+                .rule {
+                    grid-template-columns: 5rem 1fr;
+                }
+
+                .footer {
+                    grid-template-columns: 1fr;
+                }
+
+                .footer-details {
+                    text-align: left;
+                }
+            }
+
+            @media (max-width: 520px) {
+                h1 {
+                    font-size: clamp(4.2rem, 24vw, 7rem);
+                }
+
+                .hero-intro {
+                    grid-template-columns: 1fr;
+                }
+
+                .hero-poster {
+                    grid-template-columns: 1fr;
+                }
+
+                .runtime {
+                    border-top: 1px solid var(--ink);
+                    border-left: 0;
+                }
+
+                .rule {
+                    grid-template-columns: 1fr;
+                    gap: 0.75rem;
+                }
+
+                .timeline li {
+                    grid-template-columns: 5.5rem 1fr;
+                }
+
+                .tag {
+                    display: none;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                html {
+                    scroll-behavior: auto;
+                }
+
+                .ticker-track {
+                    animation: none;
+                }
+
+                *,
+                *::before,
+                *::after {
+                    transition-duration: 0.01ms !important;
+                }
+            }
+        </style>
     </head>
     <body>
+        <a class="skip-link" href="#programme">Skip to the programme</a>
+
+        <header class="site-header">
+            <div class="wordmark">HFFF / 26</div>
+            <div class="date">Saturday 8 August · From 12 noon</div>
+            <a href="#programme">Programme ↓</a>
+        </header>
+
         <main>
-            <h1>Hello, world!</h1>
+            <section class="hero" aria-labelledby="festival-title">
+                <div class="hero-copy">
+                    <div>
+                        <p class="eyebrow">independent film festival</p>
+                        <h1 id="festival-title">
+                            <span>Heartfort</span>
+                            <span class="outline">Flash</span>
+                            <span>Film</span>
+                            <span>Festival</span>
+                        </h1>
+                    </div>
+                    <div class="hero-intro">
+                        <span class="edition" aria-label="Heartfort Flash Film Festival 2026">HFFF 26</span>
+                        <p>Make a tiny film. Watch it with us on our new TV.</p>
+                    </div>
+                </div>
+
+                <div class="hero-poster" aria-label="Festival challenge: the theme is cats and the recommended film length is 90 seconds">
+                    <div class="cat-mark" aria-hidden="true">
+                        <div class="ears">
+                            <span class="ear"></span>
+                            <span class="ear"></span>
+                        </div>
+                        <div class="eyes">
+                            <span class="eye"></span>
+                            <span class="eye"></span>
+                        </div>
+                        <div class="whiskers">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="runtime">
+                        <p>Recommended film length</p>
+                        <strong>90 <span>sec</span></strong>
+                    </div>
+                </div>
+            </section>
+
+            <div class="ticker" aria-hidden="true">
+                <div class="ticker-track">
+                    The theme is cats · 90 seconds recommended · The theme is cats · 90 seconds recommended ·
+                    The theme is cats · 90 seconds recommended · The theme is cats · 90 seconds recommended ·
+                </div>
+            </div>
+
+            <section class="brief" aria-labelledby="brief-title">
+                <div class="brief-heading">
+                    <p class="section-number">The challenge</p>
+                    <h2 id="brief-title">Small films.<br>Big cats.</h2>
+                </div>
+                <div class="brief-rules">
+                    <article class="rule">
+                        <span class="rule-index">01</span>
+                        <div>
+                            <h3>Cats</h3>
+                            <p>The theme is cats. Real cats, imagined cats, cat people, cat mysteries, cats with wings, cats and dogs. Don’t be limited. Be wild.</p>
+                        </div>
+                    </article>
+                    <article class="rule">
+                        <span class="rule-index">02</span>
+                        <div>
+                            <h3>90 sec</h3>
+                            <p>Aim for your film to be 90 seconds. Not a strict requirement, just don’t make one that’s 10 minutes or 3 hours.</p>
+                        </div>
+                    </article>
+                    <article class="rule">
+                        <span class="rule-index">03</span>
+                        <div>
+                            <h3>Made today</h3>
+                            <p>Shot, edited, premièred in one afternoon. Shot across London (anywhere you want as long as you’re back by 3:30pm), edited on your phone, premièred on our TV.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="programme" id="programme" aria-labelledby="programme-title">
+                <div class="programme-header">
+                    <div>
+                        <p class="section-number">Saturday 8 August</p>
+                        <h2 id="programme-title">Programme</h2>
+                    </div>
+                </div>
+                <ol class="timeline">
+                    <li>
+                        <time class="time" datetime="12:00">12:00</time>
+                        <span class="event">Doors open</span>
+                        <span class="tag">Arrive</span>
+                    </li>
+                    <li>
+                        <time class="time" datetime="12:30">12:30</time>
+                        <span class="event">Opening ceremony</span>
+                        <span class="tag">Welcome</span>
+                    </li>
+                    <li>
+                        <time class="time" datetime="13:00">13:00</time>
+                        <span class="event">Start filming</span>
+                        <span class="tag">Action</span>
+                    </li>
+                    <li>
+                        <time class="time" datetime="15:00">15:00</time>
+                        <span class="event">End filming / Lunch (not provided by the festival)</span>
+                        <span class="tag">Cut / Refuel</span>
+                    </li>
+                    <li>
+                        <time class="time" datetime="16:00">16:00</time>
+                        <span class="event">Film viewings</span>
+                        <span class="tag">Premières</span>
+                    </li>
+                    <li>
+                        <time class="time" datetime="16:30">16:30</time>
+                        <span class="event">Closing ceremony</span>
+                        <span class="tag">Applause</span>
+                    </li>
+                </ol>
+            </section>
         </main>
+
+        <footer class="footer">
+            <h2>See you at the Fort.</h2>
+            <div class="footer-details">
+                <p>Heartfort Flash Film Festival<br>Saturday 8 August · From 12 noon<br>90 seconds · Theme: cats</p>
+            </div>
+        </footer>
     </body>
 </html>

@@ -415,6 +415,102 @@
                 line-height: 1.4;
             }
 
+            .poster-showcase {
+                display: grid;
+                grid-template-columns: minmax(20rem, 1.05fr) minmax(0, 0.95fr);
+                border-bottom: 1px solid var(--ink);
+            }
+
+            .poster-artwork {
+                display: grid;
+                place-items: center;
+                min-width: 0;
+                margin: 0;
+                padding: clamp(2rem, 6vw, 5rem);
+                border-right: 1px solid var(--ink);
+                background: var(--red);
+            }
+
+            .poster-artwork a {
+                display: block;
+                width: min(100%, 34rem);
+                border: 1px solid var(--cream);
+                background: var(--ink);
+                transform: rotate(-1deg);
+                transition: transform 180ms ease;
+            }
+
+            .poster-artwork a:hover,
+            .poster-artwork a:focus-visible {
+                transform: rotate(0deg) scale(1.01);
+            }
+
+            .poster-artwork img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+
+            .poster-copy {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                min-height: 42rem;
+                padding: clamp(2.5rem, 6vw, 5rem);
+                background: var(--acid);
+            }
+
+            .poster-copy h2 {
+                max-width: 7ch;
+                margin: 0;
+                font-size: clamp(4rem, 9vw, 8rem);
+                font-weight: 900;
+                letter-spacing: -0.08em;
+                line-height: 0.75;
+                text-transform: uppercase;
+            }
+
+            .poster-details {
+                display: grid;
+                gap: 1.5rem;
+                max-width: 30rem;
+            }
+
+            .poster-details p {
+                margin: 0;
+                font-family: Georgia, "Times New Roman", serif;
+                font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+                line-height: 1.4;
+            }
+
+            .poster-link {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1rem;
+                padding: 1.25rem 0;
+                border-top: 1px solid var(--ink);
+                border-bottom: 1px solid var(--ink);
+                font-size: clamp(1rem, 2vw, 1.4rem);
+                font-weight: 900;
+                letter-spacing: -0.03em;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .poster-link span:last-child {
+                color: var(--red);
+                font-family: Georgia, "Times New Roman", serif;
+                font-size: 1.8em;
+                font-style: italic;
+                line-height: 0;
+            }
+
+            .poster-link:hover,
+            .poster-link:focus-visible {
+                color: var(--red);
+            }
+
             .programme {
                 color: var(--cream);
                 background: var(--ink);
@@ -945,6 +1041,19 @@
                     grid-template-columns: 1fr;
                 }
 
+                .poster-showcase {
+                    grid-template-columns: 1fr;
+                }
+
+                .poster-artwork {
+                    border-right: 0;
+                    border-bottom: 1px solid var(--ink);
+                }
+
+                .poster-copy {
+                    min-height: 24rem;
+                }
+
                 .submissions-header {
                     grid-template-columns: 1fr;
                     align-items: start;
@@ -1075,6 +1184,15 @@
                 .rule {
                     grid-template-columns: 1fr;
                     gap: 0.75rem;
+                }
+
+                .poster-artwork {
+                    padding: 1.5rem;
+                }
+
+                .poster-copy {
+                    min-height: 22rem;
+                    padding-block: 3rem;
                 }
 
                 .programme-header {
@@ -1277,6 +1395,34 @@
                             <p>Shot, edited, premièred in one afternoon. Shot across London (anywhere you want as long as you’re back by 3:30pm), edited on your phone, premièred on our TV.</p>
                         </div>
                     </article>
+                </div>
+            </section>
+
+            <section class="poster-showcase" aria-labelledby="poster-title">
+                <figure class="poster-artwork">
+                    <a href="public/poster.png" target="_blank" rel="noopener" aria-label="View the full-resolution festival poster">
+                        <img
+                            src="public/poster-display.png"
+                            width="1273"
+                            height="1800"
+                            loading="lazy"
+                            decoding="async"
+                            alt="Heartfort Flash Film Festival poster featuring a red cat eye and the theme Cats in 90 Seconds"
+                        >
+                    </a>
+                </figure>
+                <div class="poster-copy">
+                    <div>
+                        <p class="section-number">HFFF / 26 Poster</p>
+                        <h2 id="poster-title">Made for walls.</h2>
+                    </div>
+                    <div class="poster-details">
+                        <p>The official 2026 festival poster. Cats, 90 seconds and one afternoon of filmmaking.</p>
+                        <a class="poster-link" href="public/poster.png" target="_blank" rel="noopener">
+                            <span>View full poster</span>
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
                 </div>
             </section>
 

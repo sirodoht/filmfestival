@@ -77,7 +77,7 @@
 
             .site-header {
                 display: grid;
-                grid-template-columns: auto 1fr auto auto;
+                grid-template-columns: auto 1fr auto auto auto;
                 align-items: center;
                 min-height: 58px;
                 border-bottom: 1px solid var(--cream);
@@ -418,6 +418,136 @@
             .programme {
                 color: var(--cream);
                 background: var(--ink);
+            }
+
+            .submissions {
+                border-bottom: 1px solid var(--ink);
+                color: var(--ink);
+                background: var(--cream);
+            }
+
+            .submissions-header {
+                display: grid;
+                grid-template-columns: minmax(0, 1.35fr) minmax(17rem, 0.65fr);
+                align-items: end;
+                gap: clamp(2rem, 6vw, 6rem);
+                padding: clamp(3.5rem, 8vw, 7rem) clamp(1rem, 5vw, 4.5rem);
+                border-bottom: 1px solid var(--ink);
+            }
+
+            .submissions-header .section-number {
+                margin-bottom: 1rem;
+                color: var(--red);
+                font-family: Georgia, "Times New Roman", serif;
+                font-size: clamp(1.35rem, 2.4vw, 2.25rem);
+                font-style: italic;
+                font-weight: 400;
+                letter-spacing: -0.03em;
+                text-transform: none;
+            }
+
+            .submissions h2 {
+                margin: 0;
+                font-size: clamp(4rem, 10vw, 9rem);
+                font-weight: 900;
+                letter-spacing: -0.08em;
+                line-height: 0.73;
+                text-transform: uppercase;
+            }
+
+            .submissions-intro {
+                max-width: 28rem;
+                margin: 0;
+                font-family: Georgia, "Times New Roman", serif;
+                font-size: clamp(1.1rem, 2vw, 1.5rem);
+                line-height: 1.35;
+            }
+
+            .submission-list {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            .submission-list li {
+                min-width: 0;
+                border-right: 1px solid var(--ink);
+                border-bottom: 1px solid var(--ink);
+            }
+
+            .submission-list li:nth-child(3n) {
+                border-right: 0;
+            }
+
+            .submission-list li:nth-last-child(-n + 3) {
+                border-bottom: 0;
+            }
+
+            .submission-link {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                grid-template-rows: auto 1fr auto;
+                gap: 1rem;
+                min-height: clamp(15rem, 25vw, 22rem);
+                padding: clamp(1.5rem, 3.5vw, 3rem);
+                color: var(--ink);
+                text-decoration: none;
+                transition: color 160ms ease, background 160ms ease;
+            }
+
+            .submission-link:hover,
+            .submission-link:focus-visible {
+                background: var(--acid);
+            }
+
+            .submission-arrow {
+                color: var(--red);
+                font-family: Georgia, "Times New Roman", serif;
+                font-size: clamp(1.5rem, 3vw, 2.5rem);
+                font-style: italic;
+                line-height: 1;
+            }
+
+            .submission-label {
+                font-size: 0.65rem;
+                font-weight: 900;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+            }
+
+            .submission-arrow {
+                grid-column: 2;
+            }
+
+            .submission-title {
+                grid-column: 1 / -1;
+                align-self: end;
+                overflow-wrap: anywhere;
+                font-size: clamp(2rem, 4vw, 3.75rem);
+                font-weight: 900;
+                letter-spacing: -0.06em;
+                line-height: 0.88;
+                text-transform: uppercase;
+            }
+
+            .submission-action {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 0.5rem 1rem;
+                grid-column: 1 / -1;
+                padding-top: 1rem;
+                border-top: 1px solid var(--ink);
+                font-size: 0.65rem;
+                font-weight: 900;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+            }
+
+            .submission-note {
+                color: var(--red);
             }
 
             .programme-header {
@@ -770,11 +900,23 @@
 
             @media (max-width: 780px) {
                 .site-header {
-                    grid-template-columns: auto 1fr auto;
+                    grid-template-columns: auto repeat(3, minmax(0, 1fr));
+                    min-height: 52px;
+                    font-size: 0.6rem;
+                    letter-spacing: 0.1em;
                 }
 
                 .date {
                     display: none;
+                }
+
+                .wordmark,
+                .site-header a {
+                    justify-content: center;
+                    min-height: 52px;
+                    padding: 0.65rem 0.7rem;
+                    text-align: center;
+                    white-space: nowrap;
                 }
 
                 .hero {
@@ -801,6 +943,33 @@
 
                 .brief {
                     grid-template-columns: 1fr;
+                }
+
+                .submissions-header {
+                    grid-template-columns: 1fr;
+                    align-items: start;
+                }
+
+                .submission-list {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+
+                .submission-list li:nth-child(3n) {
+                    border-right: 1px solid var(--ink);
+                }
+
+                .submission-list li:nth-child(2n) {
+                    border-right: 0;
+                }
+
+                .submission-list li:nth-last-child(-n + 3) {
+                    border-bottom: 1px solid var(--ink);
+                }
+
+                .submission-list li:last-child {
+                    grid-column: 1 / -1;
+                    border-right: 0;
+                    border-bottom: 0;
                 }
 
                 .brief-heading {
@@ -858,6 +1027,16 @@
             }
 
             @media (max-width: 520px) {
+                .site-header {
+                    font-size: 0.55rem;
+                    letter-spacing: 0.08em;
+                }
+
+                .wordmark,
+                .site-header a {
+                    padding-inline: 0.5rem;
+                }
+
                 .hero {
                     min-height: 0;
                 }
@@ -904,6 +1083,30 @@
 
                 .programme h2 {
                     font-size: clamp(2.85rem, 14.5vw, 4rem);
+                }
+
+                .submissions h2 {
+                    font-size: clamp(2.85rem, 14.5vw, 4rem);
+                }
+
+                .submission-list {
+                    grid-template-columns: 1fr;
+                }
+
+                .submission-list li,
+                .submission-list li:nth-child(2n),
+                .submission-list li:nth-child(3n),
+                .submission-list li:nth-last-child(-n + 3) {
+                    border-right: 0;
+                    border-bottom: 1px solid var(--ink);
+                }
+
+                .submission-list li:last-child {
+                    border-bottom: 0;
+                }
+
+                .submission-link {
+                    min-height: 13rem;
                 }
 
                 .timeline li {
@@ -992,6 +1195,7 @@
             <div class="wordmark">HFFF / 26</div>
             <div class="date">Saturday 8 August · From 12 noon</div>
             <a href="#programme">Programme ↓</a>
+            <a href="#submissions">Films ↓</a>
             <a href="#merch">Merch ↓</a>
         </header>
 
@@ -1115,6 +1319,96 @@
                         <span class="tag">Applause</span>
                     </li>
                 </ol>
+            </section>
+
+            <section class="submissions" id="submissions" aria-labelledby="submissions-title">
+                <div class="submissions-header">
+                    <div>
+                        <p class="section-number">The full selection · 9 films</p>
+                        <h2 id="submissions-title">Submissions</h2>
+                    </div>
+                    <p class="submissions-intro">All nine films submitted to HFFF 26, made in one afternoon.</p>
+                </div>
+                <ul class="submission-list">
+                    <li>
+                        <a class="submission-link" href="https://hfff.s3.fr-par.scw.cloud/2026/joshua-savannah-zuzana.mp4" target="_blank" rel="noopener">
+                            <span class="submission-label">Submission</span>
+                            <span class="submission-arrow" aria-hidden="true">↗</span>
+                            <span class="submission-title">Joshua, Savannah &amp; Zuzana</span>
+                            <span class="submission-action">
+                                <span>Watch film</span>
+                                <span class="submission-note">Original soundtrack unavailable</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submission-link" href="https://hfff.s3.fr-par.scw.cloud/2026/orfeas.mp4" target="_blank" rel="noopener">
+                            <span class="submission-label">Submission</span>
+                            <span class="submission-arrow" aria-hidden="true">↗</span>
+                            <span class="submission-title">Orfeas</span>
+                            <span class="submission-action">Watch film</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submission-link" href="https://hfff.s3.fr-par.scw.cloud/2026/marti-theo.mp4" target="_blank" rel="noopener">
+                            <span class="submission-label">Submission</span>
+                            <span class="submission-arrow" aria-hidden="true">↗</span>
+                            <span class="submission-title">Marti &amp; Theo</span>
+                            <span class="submission-action">Watch film</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submission-link" href="https://hfff.s3.fr-par.scw.cloud/2026/mihai-matei.mov" target="_blank" rel="noopener">
+                            <span class="submission-label">Submission</span>
+                            <span class="submission-arrow" aria-hidden="true">↗</span>
+                            <span class="submission-title">Mihai &amp; Matei</span>
+                            <span class="submission-action">Watch film</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submission-link" href="https://hfff.s3.fr-par.scw.cloud/2026/vitka.mov" target="_blank" rel="noopener">
+                            <span class="submission-label">Submission</span>
+                            <span class="submission-arrow" aria-hidden="true">↗</span>
+                            <span class="submission-title">Vitka</span>
+                            <span class="submission-action">Watch film</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submission-link" href="https://hfff.s3.fr-par.scw.cloud/2026/niba.mp4" target="_blank" rel="noopener">
+                            <span class="submission-label">Submission</span>
+                            <span class="submission-arrow" aria-hidden="true">↗</span>
+                            <span class="submission-title">Niba</span>
+                            <span class="submission-action">
+                                <span>Watch film</span>
+                                <span class="submission-note">Sorry Niba, the second AirDrop had the same sound</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submission-link" href="https://hfff.s3.fr-par.scw.cloud/2026/zuzana.mp4" target="_blank" rel="noopener">
+                            <span class="submission-label">Submission</span>
+                            <span class="submission-arrow" aria-hidden="true">↗</span>
+                            <span class="submission-title">Zuzana</span>
+                            <span class="submission-action">Watch film</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submission-link" href="https://hfff.s3.fr-par.scw.cloud/2026/chryssa.mp4" target="_blank" rel="noopener">
+                            <span class="submission-label">Submission</span>
+                            <span class="submission-arrow" aria-hidden="true">↗</span>
+                            <span class="submission-title">Chryssa</span>
+                            <span class="submission-action">Watch film</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submission-link" href="https://hfff.s3.fr-par.scw.cloud/2026/justin-emily.mp4" target="_blank" rel="noopener">
+                            <span class="submission-label">Submission</span>
+                            <span class="submission-arrow" aria-hidden="true">↗</span>
+                            <span class="submission-title">Justin &amp; Emily</span>
+                            <span class="submission-action">Watch film</span>
+                        </a>
+                    </li>
+                </ul>
             </section>
 
             <section class="merch" id="merch" aria-labelledby="merch-title">

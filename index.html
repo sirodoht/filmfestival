@@ -77,7 +77,7 @@
 
             .site-header {
                 display: grid;
-                grid-template-columns: auto 1fr auto;
+                grid-template-columns: auto 1fr auto auto;
                 align-items: center;
                 min-height: 58px;
                 border-bottom: 1px solid var(--cream);
@@ -498,6 +498,180 @@
                 background: var(--cream);
             }
 
+            .merch {
+                border-bottom: 1px solid var(--ink);
+                color: var(--ink);
+                background: var(--acid);
+            }
+
+            .merch-strip {
+                display: flex;
+                justify-content: space-between;
+                gap: 2rem;
+                padding: 0.8rem clamp(1rem, 3vw, 2rem);
+                border-bottom: 1px solid var(--ink);
+                font-size: 0.68rem;
+                font-weight: 900;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+            }
+
+            .merch-strip p {
+                margin: 0;
+            }
+
+            .merch-grid {
+                display: grid;
+                grid-template-columns: minmax(0, 1.25fr) minmax(22rem, 0.75fr);
+            }
+
+            .merch-copy {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                min-height: 44rem;
+                overflow: hidden;
+                padding: clamp(2.5rem, 6vw, 5rem);
+                border-right: 1px solid var(--ink);
+            }
+
+            .merch-copy h2 {
+                position: relative;
+                z-index: 1;
+                max-width: 7ch;
+                margin: 0;
+                font-size: clamp(4.5rem, 9.5vw, 9rem);
+                font-weight: 900;
+                letter-spacing: -0.09em;
+                line-height: 0.7;
+                text-transform: uppercase;
+            }
+
+            .merch-copy h2 span {
+                display: block;
+            }
+
+            .merch-copy h2 span:last-child {
+                color: var(--red);
+            }
+
+            .merch-visual {
+                position: absolute;
+                top: 5.4rem;
+                right: 1.5rem;
+                z-index: 0;
+                width: min(49%, 31rem);
+                pointer-events: none;
+                transform: rotate(1deg);
+            }
+
+            .merch-shirt {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+
+            .merch-view-label {
+                position: absolute;
+                right: 0.75rem;
+                bottom: 18%;
+                padding: 0.8rem 1rem;
+                border: 1px solid var(--ink);
+                color: var(--ink);
+                background: var(--red);
+                font-size: clamp(0.58rem, 0.8vw, 0.7rem);
+                font-weight: 900;
+                letter-spacing: 0.12em;
+                line-height: 1.25;
+                text-transform: uppercase;
+                white-space: nowrap;
+                transform: rotate(-2deg);
+            }
+
+            .merch-footer {
+                position: relative;
+                z-index: 1;
+                width: 100%;
+                margin-top: auto;
+                padding-top: 1.5rem;
+                border-top: 1px solid var(--ink);
+                background: var(--acid);
+            }
+
+            .merch-note {
+                margin: 0;
+                font-family: Georgia, "Times New Roman", serif;
+                font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+                line-height: 1.35;
+            }
+
+            .merch-offer {
+                display: grid;
+                grid-template-rows: auto 1fr auto;
+                min-width: 0;
+            }
+
+            .merch-product {
+                margin: 0;
+                padding: clamp(1.5rem, 4vw, 3rem);
+                border-bottom: 1px solid var(--ink);
+                font-size: 0.72rem;
+                font-weight: 900;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+            }
+
+            .merch-price {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 0;
+                padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2.5rem);
+                overflow: hidden;
+                font-size: clamp(8rem, 20vw, 18rem);
+                font-weight: 900;
+                letter-spacing: -0.11em;
+                line-height: 0.65;
+                white-space: nowrap;
+            }
+
+            .merch-price sup {
+                align-self: flex-start;
+                margin-top: 0.08em;
+                color: var(--red);
+                font-family: Georgia, "Times New Roman", serif;
+                font-size: 0.28em;
+                font-style: italic;
+                letter-spacing: -0.04em;
+            }
+
+            .merch-buy {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1rem;
+                min-height: 6rem;
+                padding: 1.5rem clamp(1rem, 3vw, 2rem);
+                color: var(--cream);
+                background: var(--ink);
+                font-size: clamp(1.1rem, 2.3vw, 1.7rem);
+                font-weight: 900;
+                letter-spacing: -0.03em;
+                text-transform: uppercase;
+            }
+
+            a.merch-buy {
+                text-decoration: none;
+                transition: color 160ms ease, background 160ms ease;
+            }
+
+            a.merch-buy:hover,
+            a.merch-buy:focus-visible {
+                color: var(--ink);
+                background: var(--red);
+            }
+
             .calendar-heading {
                 display: flex;
                 flex-direction: column;
@@ -596,7 +770,7 @@
 
             @media (max-width: 780px) {
                 .site-header {
-                    grid-template-columns: auto 1fr;
+                    grid-template-columns: auto 1fr auto;
                 }
 
                 .date {
@@ -641,6 +815,31 @@
 
                 .calendar {
                     grid-template-columns: 1fr;
+                }
+
+                .merch-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .merch-copy {
+                    min-height: 0;
+                    border-right: 0;
+                    border-bottom: 1px solid var(--ink);
+                }
+
+                .merch-visual {
+                    position: relative;
+                    top: auto;
+                    right: auto;
+                    align-self: center;
+                    width: min(68%, 28rem);
+                    margin: -1rem auto -0.5rem;
+                    transform: rotate(1deg);
+                }
+
+                .merch-price {
+                    min-height: 22rem;
+                    font-size: clamp(9rem, 38vw, 18rem);
                 }
 
                 .calendar-heading {
@@ -732,6 +931,38 @@
                     font-size: clamp(1.55rem, 8vw, 2.2rem);
                 }
 
+                .merch-strip p:last-child {
+                    display: none;
+                }
+
+                .merch-copy {
+                    min-height: 30rem;
+                    padding-block: 3rem;
+                }
+
+                .merch-copy h2 {
+                    font-size: clamp(3.5rem, 18vw, 5.5rem);
+                }
+
+                .merch-visual {
+                    width: min(86%, 24rem);
+                    margin: -0.5rem auto 0.5rem;
+                }
+
+                .merch-view-label {
+                    right: -0.25rem;
+                    bottom: 14%;
+                    max-width: 12rem;
+                    padding: 0.65rem 0.75rem;
+                    font-size: 0.56rem;
+                    white-space: normal;
+                }
+
+                .merch-price {
+                    min-height: 17rem;
+                    font-size: clamp(8rem, 47vw, 14rem);
+                }
+
                 .tag {
                     display: none;
                 }
@@ -761,6 +992,7 @@
             <div class="wordmark">HFFF / 26</div>
             <div class="date">Saturday 8 August · From 12 noon</div>
             <a href="#programme">Programme ↓</a>
+            <a href="#merch">Merch ↓</a>
         </header>
 
         <main>
@@ -883,6 +1115,48 @@
                         <span class="tag">Applause</span>
                     </li>
                 </ol>
+            </section>
+
+            <section class="merch" id="merch" aria-labelledby="merch-title">
+                <div class="merch-strip">
+                    <p>HFFF / 26 · Festival tee</p>
+                    <p>Limited run · Order online</p>
+                </div>
+                <div class="merch-grid">
+                    <div class="merch-copy">
+                        <div>
+                            <h2 id="merch-title"><span>Merch.</span></h2>
+                        </div>
+                        <div class="merch-visual">
+                            <img
+                                class="merch-shirt"
+                                src="public/tee-cutout.png"
+                                width="1188"
+                                height="1324"
+                                loading="lazy"
+                                decoding="async"
+                                alt="Back view of the black Heartfort Flash Film Festival T-shirt with a line drawing of the venue; the front is blank"
+                            >
+                            <span class="merch-view-label">Back print shown · Front is blank</span>
+                        </div>
+                        <div class="merch-footer">
+                            <p class="merch-note">Limited edition T-shirt. Order yours and pick it up at Heartfort any day (just message us).</p>
+                        </div>
+                    </div>
+                    <div class="merch-offer">
+                        <p class="merch-product">HFFF / 26 Festival Tee · Limited edition</p>
+                        <div class="merch-price" aria-label="Twenty-five pounds"><sup>£</sup>25</div>
+                        <a
+                            class="merch-buy"
+                            href="https://buy.stripe.com/fZu6oI9EUa63gm6b2K53O00"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            <span>Order</span>
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                </div>
             </section>
 
             <section class="calendar" aria-labelledby="calendar-title">
